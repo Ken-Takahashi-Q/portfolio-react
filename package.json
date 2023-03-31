@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
@@ -21,5 +22,6 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "vite": "^4.2.0"
-  }
+  },
+  "homepage": "https://ken-takahashi-q.github.io/portfolio-react"
 }
