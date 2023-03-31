@@ -1,0 +1,146 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: rgb(248, 248, 248);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: inherit;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1em;
+  padding: 1em;
+  width: 800px;
+}
+.card-round {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em 2em;
+  background: linear-gradient(0deg, rgb(127, 127, 127), rgb(176, 176, 176));
+  border-radius: 2em;
+  overflow: hidden;
+}
+.card-1 {
+  grid-area: 1 / 1 / 3 / 2;
+}
+.card-2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.card-3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.card-4 {
+  grid-area: 2 / 2 / 3 / 4;
+  position: relative;
+}
+.card-5 {
+  grid-area: 3 / 1 / 4 / 3;
+}
+.card-6 {
+  grid-area: 3 / 3 / 4 / 4;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+.summary {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.card-4 h1 {
+  transform: translateY(-40%);
+  
+}
+.date-sliding {
+  position: absolute;
+  left: 6.5%;
+}
+.job-sliding {
+  position: absolute;
+  left: 40%;
+}
+.duration-sliding {
+  position: absolute;
+  right: -30%;
+}
+
+.card-4:hover {
+  transition: all 0.5s ease;
+}
+.card-4:hover .date-sliding {
+  left: -30%;
+}
+.card-4:hover .job-sliding {
+  left: 6.5%;
+}
+.card-4:hover .duration-sliding {
+  right: 7%;
+}
+.card-4:not(:hover) .date-sliding, .job-sliding, .duration-sliding {
+  transition: all 0.5s ease;
+}
+
+.skill ul {
+  display: flex;
+  gap: 2em;
+  list-style: none;
+}
+
+/* card-6 find-out-more animation */
+.card-6 h1 {
+  display: inline-block;
+  transition: all 0.5s ease;
+}
+.card-6 .find-out-more {
+  position: absolute;
+  top: 33%;
+  right: -20%;
+}
+.card-6:hover h1 {
+  transform: translateX(-5%);
+}
+.card-6:hover .find-out-more {
+  right: 13%;
+}
+.card-6:not(:hover) h1, .find-out-more {
+  transition: all 0.5s ease;
+}
+
+.gallery {
+  display: flex;
+  padding: 1em;
+  gap: 1em;
+  overflow-x: scroll;
+}
+.gallery .card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 240px;
+  padding: 1em;
+  background-color: aquamarine;
+  border-radius: 1em;
+}
