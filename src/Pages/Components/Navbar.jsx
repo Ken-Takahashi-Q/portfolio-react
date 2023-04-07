@@ -6,10 +6,10 @@ export default function Navbar() {
     <div className="navbar">
         <ul>
             <li>
-                <p>Home</p>
+              <a href="/">Home</a>
             </li>
             <li>
-                <p>Contact</p>
+              <a href="/Contact">Contact</a>
             </li>
         </ul>
     </div>
