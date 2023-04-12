@@ -4,6 +4,7 @@ import Navbar from './Pages/Components/Navbar'
 import { Grid, Row, Col } from 'antd'
 import { Collapse } from 'antd';
 import {RightCircleOutlined} from '@ant-design/icons'
+import Gallery from './Pages/Components/Gallery';
 
 function Home() {
   const { Panel } = Collapse;
@@ -34,6 +35,10 @@ function Home() {
     NSQ: getDuration(startDate.NSQ, endDate.NSQ),
     JP: getDuration(startDate.JP, endDate.JP),
   };
+
+  const showCard = () => {
+    setShowContact(!showContact);
+  }
 
   return (
     <div className="App">
@@ -71,41 +76,50 @@ function Home() {
           </ul>
         </div>
 
-        <div className="card-round card-6" onClick={() => setShowContact(!showContact)}>
+        <div className="card-round card-6" onClick={showCard}>
           <h1>Find out more </h1>
           <div className="find-out-more">
             <RightCircleOutlined style={{fontSize: "3em"}}/>
           </div>
         </div>
 
-        <div className={`card-round card-7 ${showContact ? 'show' : ''}`}>
+        <div className={`card-round card-7 ${showContact ? 'show' : 'hide'}`}>
           <div className="contact-container">
             <h3>LinkedIn</h3>
-            <h3>Github</h3>
+            <a href="https://github.com/Ken-Takahashi-Q">
+              <h3>Github</h3>
+            </a>
+          </div>
+          <div className="find-out-more">
+            <RightCircleOutlined rotate={270} style={{fontSize: "3em"}}
+              onClick={showCard} className="arrow"
+            />
           </div>
         </div>
         
       </div>
 
       <div className="gallery">
-        <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
-          <div className='gallery card'>
-            <div className="cardname">
-              <p>Calculator</p>
+        {/* <Gallery /> */}
+        {/* <Carousel autoplay> */}
+          {/* <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Calculator</p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <a href="https://lustrous-tiramisu-ddab0e.netlify.app/" target={'_blank'}>
-          <div className='gallery card'>
-            <div className="cardname">
-              <p>Todo list</p>
+          <a href="https://lustrous-tiramisu-ddab0e.netlify.app/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Todo list</p>
+              </div>
             </div>
-          </div>
-        </a>
-
-
+          </a> */}
+        {/* </Carousel> */}
       </div>
+
     </div>
   )
 }

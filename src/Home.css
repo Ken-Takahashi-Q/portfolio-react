@@ -38,6 +38,10 @@ a {
   overflow: hidden;
   transition: transform 0.3s ease;
 }
+.card-round:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
 .card-1 {
   grid-area: 1 / 1 / 3 / 2;
 }
@@ -61,10 +65,12 @@ a {
 }
 .card-7 {
   grid-area: 4 / 1 / 5 / 4;
+  display: flex;
+  flex-direction: row;
   position: relative;
-  height: 0;
+  /* height: 0;
   opacity: 0;
-  transform: scale(0);
+  transform: scale(0); */
   transition: all 0.75s ease;
 }
 
@@ -124,9 +130,9 @@ a {
   top: 33%;
   right: -20%;
 }
-.card-6 .find-out-more:hover {
+/* .card-6 .find-out-more:hover {
   top: 45%;
-}
+} */
 .card-6:hover {
   cursor: pointer;
 }
@@ -142,7 +148,17 @@ a {
 }
 
 /* card-7 scaling animation */
+.card-7.hide {
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.7s ease;
+}
 .card-7.show {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   visibility: visible;
   height: auto;
   transform: scale(1);
@@ -156,14 +172,28 @@ a {
 
 .contact-container {
   display: flex;
-  gap: 1em;
+  gap: 3em;
+}
+.find-out-more {
+  cursor: pointer;
+}
+.card-7 .arrow {
+  transition: all 0.4s ease;
+}
+.card-7 .arrow:hover {
+  transform: translateY(-10%);
+  transition: all 0.4s ease;
+}
+.arrow.hide {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.7s ease;
 }
 
 .gallery {
   display: flex;
-  padding: 1em;
   gap: 1em;
-  overflow-x: scroll;
+  overflow: hidden;
 }
 .gallery .card {
   display: flex;
