@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './Home.css'
+import './Home.scss'
 import Navbar from './Pages/Components/Navbar'
 import { Grid, Row, Col } from 'antd'
 import { Collapse } from 'antd';
@@ -46,10 +46,11 @@ function Home() {
       
       <div className="card-container">
         <div className="card-round card-1">
-          <h1>Profile pic</h1>
+          {/* <h1>Profile pic</h1> */}
         </div>
         <div className="card-round card-2">
-          <h1>Name</h1>
+          <h1>Yathip Takahashi</h1>
+          <h1 className="nickname">KEN</h1>
         </div>
         <div className="card-round card-3">
           <h1>Looking for</h1>
@@ -58,11 +59,9 @@ function Home() {
         <div className="card-round card-4">
           <h1>Experience</h1>
           <div className="experience">
-            <div className="summary">
-              <h3 className="date-sliding">2023.3 - now</h3>
-              <h3 className="job-sliding">Software Engineer (Frontend)</h3>
-              <h3 className="duration-sliding">{durations.NSQ}</h3>
-            </div>
+            <h3 className="date-sliding">2023.3 - now</h3>
+            <h3 className="job-sliding">Software Engineer (Frontend)</h3>
+            <h3 className="duration-sliding">{durations.NSQ}</h3>
           </div>
         </div>
 
@@ -77,16 +76,22 @@ function Home() {
         </div>
 
         <div className="card-round card-6" onClick={showCard}>
-          <h1>Find out more </h1>
           <div className="find-out-more">
-            <RightCircleOutlined style={{fontSize: "3em"}}/>
+            <h1>Find out more </h1>
+            <div className="find-out-more arrow">
+              <RightCircleOutlined style={{fontSize: "3em"}}/>
+            </div>
           </div>
         </div>
 
         <div className={`card-round card-7 ${showContact ? 'show' : 'hide'}`}>
           <div className="contact-container">
-            <h3>LinkedIn</h3>
-            <a href="https://github.com/Ken-Takahashi-Q">
+            <a className="linkedin" href="https://www.linkedin.com/in/k-tkhashi/">
+              <img src="/images/logo-linkedin.png"></img>
+              <h3>LinkedIn</h3>
+            </a>
+            <a className="github" href="https://github.com/Ken-Takahashi-Q">
+            <img src="/images/logo-github.png"></img>
               <h3>Github</h3>
             </a>
           </div>
