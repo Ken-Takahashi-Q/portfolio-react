@@ -49,13 +49,15 @@ function Home() {
           {/* <h1>Profile pic</h1> */}
         </div>
         <div className="card-round card-2">
-          <h1>Yathip Takahashi</h1>
+          <h1 className="fullname">Yathip Takahashi</h1>
           <h1 className="nickname">KEN</h1>
         </div>
+
         <div className="card-round card-3">
           <h1>Looking for</h1>
           <h3>Frontend Developer</h3>
         </div>
+
         <div className="card-round card-4">
           <h1>Experience</h1>
           <div className="experience">
@@ -69,7 +71,7 @@ function Home() {
           <h1>Skills</h1>
           <ul>
             <li>HTML/CSS/SCSS</li>
-            <li>JavaScript, React.JS</li>
+            <li>JavaScript, React</li>
             <li>Tailwind CSS</li>
             <li>Python</li>
           </ul>
@@ -91,9 +93,15 @@ function Home() {
               <h3>LinkedIn</h3>
             </a>
             <a className="github" href="https://github.com/Ken-Takahashi-Q">
-            <img src="/images/logo-github.png"></img>
+              <img src="/images/logo-github.png"></img>
               <h3>Github</h3>
             </a>
+
+            <a className="resume" href="/resume.pdf">
+              
+              <h3>Resume</h3>
+            </a>
+
           </div>
           <div className="find-out-more">
             <RightCircleOutlined rotate={270} style={{fontSize: "3em"}}
@@ -104,10 +112,11 @@ function Home() {
         
       </div>
 
+      <span className={`separator ${showContact ? "show" : ""}`}></span>
+
       <div className="gallery">
-        {/* <Gallery /> */}
-        {/* <Carousel autoplay> */}
-          {/* <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
+        <div className="gallery-container">
+          <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
             <div className='gallery card'>
               <div className="cardname">
                 <p>Calculator</p>
@@ -121,8 +130,46 @@ function Home() {
                 <p>Todo list</p>
               </div>
             </div>
-          </a> */}
-        {/* </Carousel> */}
+          </a>
+
+          <a href="https://mancala-boardgame.netlify.app/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Board Game</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://elegant-dragon-097141.netlify.app/09-expense%20chart/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Expense Chart</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://elegant-dragon-097141.netlify.app/07-notification%20page/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Notification Page</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
+            <div className='gallery card'>
+              <div className="cardname">
+                <p>Weather API</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="gallery-text">
+          <h2>Portfolio</h2>
+          <p>Explore</p>
+        </div>
+          
       </div>
 
     </div>

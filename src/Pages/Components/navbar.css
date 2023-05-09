@@ -5,11 +5,11 @@
 .navbar {
     display: flex;
     justify-content: flex-end;
-    width: 100vw;
+    width: 100%;
 }
 .navbar ul {
     display: flex;
-    padding: 0.5em 3em 0.5em 0.5em;
+    padding: 0.5em 2em 0.5em 0.5em;
     gap: 0.5em;
 }
 .navbar li {
