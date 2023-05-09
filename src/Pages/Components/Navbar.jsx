@@ -8,7 +8,7 @@ export default function Navbar() {
             <li>
               <a href="/">Home</a>
             </li>
-            <li>
+            <li style={{pointerEvents: "none"}}>
               <a href="/Contact">Contact</a>
             </li>
         </ul>

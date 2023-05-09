@@ -50,7 +50,11 @@ function Home() {
         </div>
         <div className="card-round card-2">
           <h1 className="fullname">Yathip Takahashi</h1>
-          <h1 className="nickname">KEN</h1>
+          <span className="nickname">
+            <h1 className="nickname letter-1">K</h1>
+            <h1 className="nickname letter-2">E</h1>
+            <h1 className="nickname letter-3">N</h1>
+          </span>
         </div>
 
         <div className="card-round card-3">
@@ -71,8 +75,8 @@ function Home() {
           <h1>Skills</h1>
           <ul>
             <li>HTML/CSS/SCSS</li>
-            <li>JavaScript, React</li>
-            <li>Tailwind CSS</li>
+            <li>JavaScript React</li>
+            <li>Tailwind SCSS</li>
             <li>Python</li>
           </ul>
         </div>
@@ -114,71 +118,105 @@ function Home() {
 
       <span className={`separator ${showContact ? "show" : ""}`}></span>
 
-      <span className="warning">Under reconstruction</span>
-
       <div className="gallery">
         <div className="gallery-container">
           <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-1">
               <div className="cardname">
-                <p>Calculator</p>
-                <h1>click</h1>
+                <p>Tips Calculator</p>
               </div>
             </div>
           </a>
 
           <a href="https://lustrous-tiramisu-ddab0e.netlify.app/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-2">
               <div className="cardname">
                 <p>Todo list</p>
-                <h1>click</h1>
               </div>
             </div>
           </a>
 
           <a href="https://mancala-boardgame.netlify.app/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-3">
               <div className="cardname">
                 <p>Board Game</p>
-                <h1>click</h1>
               </div>
             </div>
           </a>
 
           <a href="https://elegant-dragon-097141.netlify.app/09-expense%20chart/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-4">
               <div className="cardname">
                 <p>Expense Chart</p>
-                <h1>click</h1>
               </div>
             </div>
           </a>
 
           <a href="https://elegant-dragon-097141.netlify.app/07-notification%20page/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-5">
               <div className="cardname">
                 <p>Notification Page</p>
-                <h1>click</h1>
               </div>
             </div>
           </a>
 
           <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
-            <div className='gallery card'>
+            <div className="gallery-container card gallery-6">
               <div className="cardname">
                 <p>Weather API</p>
-                <h1>click</h1>
               </div>
             </div>
           </a>
+
+          <div className="gallery-text">
+            <div>
+              <h1>Portfolio</h1>
+              <h3>Developed various categories of website projects based on both self-created and provided web design as hobby</h3>
+            </div>
+            <a className="link-button" href="https://www.frontendmentor.io/profile/Ken-Takahashi-Q" target="_blank">Special thanks to <strong>frontendmentor.io</strong></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="experience">
+        <div className="experience left-side">
+          <ul>
+            <li>
+              <span><strong>Developed</strong> a <strong>marketplace</strong> management website for organizing and tracking merchandise</span>
+            </li>
+            <li style={{paddingLeft: "2em"}}>
+              <span>
+                <strong>Delicately</strong> designed. Contributed in planning and testing phases under <span>agile</span> project management
+              </span>
+            </li>
+          </ul>
         </div>
 
-        <div className="gallery-text">
-          <h2>Portfolio</h2>
-          <p>Explore</p>
+        <div className="experience right-side">
+          <div className="logo react">
+            <img src="/images/react.png"></img>
+            <h2>React</h2>
+          </div>
+          <div className="logo sass">
+            <img src="/images/sass.png"></img>
+            <h2>SASS</h2>
+          </div>
+          <div className="logo antd">
+            <img src="/images/antd.png"></img>
+            <h2>AntD</h2>
+          </div>
+          <div className="logo figma">
+            <img src="/images/figma.svg"></img>
+            <h2>Figma</h2>
+          </div>
+          <div className="logo redux">
+            <img src="/images/redux.png"></img>
+            <h2>Redux</h2>
+          </div>
         </div>
-          
       </div>
+
+      <span className="warning">Under reconstruction</span>
 
     </div>
   )
