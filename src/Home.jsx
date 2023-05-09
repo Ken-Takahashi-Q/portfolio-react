@@ -114,12 +114,15 @@ function Home() {
 
       <span className={`separator ${showContact ? "show" : ""}`}></span>
 
+      <span className="warning">Under reconstruction</span>
+
       <div className="gallery">
         <div className="gallery-container">
           <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
             <div className='gallery card'>
               <div className="cardname">
                 <p>Calculator</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>
@@ -128,6 +131,7 @@ function Home() {
             <div className='gallery card'>
               <div className="cardname">
                 <p>Todo list</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>
@@ -136,6 +140,7 @@ function Home() {
             <div className='gallery card'>
               <div className="cardname">
                 <p>Board Game</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>
@@ -144,6 +149,7 @@ function Home() {
             <div className='gallery card'>
               <div className="cardname">
                 <p>Expense Chart</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>
@@ -152,6 +158,7 @@ function Home() {
             <div className='gallery card'>
               <div className="cardname">
                 <p>Notification Page</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>
@@ -160,6 +167,7 @@ function Home() {
             <div className='gallery card'>
               <div className="cardname">
                 <p>Weather API</p>
+                <h1>click</h1>
               </div>
             </div>
           </a>

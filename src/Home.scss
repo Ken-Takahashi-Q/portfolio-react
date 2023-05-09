@@ -305,6 +305,24 @@ a {
   }
 }
 
+.warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(45deg, #eded5f 25%, #000000 25%, #000000 50%, #eded5f 50%, #eded5f 75%, #000000 75%, #000000 100%);
+  background-size: 200px 200px;
+  height: 3rem;
+  width: 100%;
+  min-width: 50ch;
+  
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 8px #000;
+  margin-bottom: 1rem;
+}
+
 .gallery {
   display: flex;
   justify-content: space-between;
