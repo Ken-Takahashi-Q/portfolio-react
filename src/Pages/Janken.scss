@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap');
+
+:root {
+  --scissor: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  --paper: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  --rock: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  --lizard: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  --cyan: linear-gradient(hsl(189, 59%, 53s%), hsl(189, 58%, 57%));
+  --whiteGrad: linear-gradient(rgb(208, 208, 208), rgb(240, 240, 240));
+
+  // Neutral
+  --darkText: hsl(229, 25%, 31%);
+  --scoreText: hsl(229, 64%, 46%);
+  --headerOutline: hsl(217, 16%, 45%);
+}
+
+main {
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  gap: 1em;
+  background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  font-size: 16px;
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+
+  &.hidden {
+    background: rgb(15, 15, 15, 0.8);
+  }
+
+  .app-foreground {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    overflow: hidden;
+
+    &.hidden {
+      filter: blur(10px);
+    }
+
+    .white-filter.show {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(255, 255, 255, 0.3);
+      z-index: 20;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+  
+    .game-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 28em;
+      margin: 2em 0 1em;
+      padding: 0.7em 1em 0.7em 1em;
+      font-size: 1.5em;
+      background-color: transparent;
+      border: 2px solid rgb(108, 108, 108);
+      border-radius: 0.7em;
+
+      img {
+        height: 4em;
+      }
+  
+      .game-score {
+        width: 6em;
+        height: 4em;
+        padding: 0.5em 1em 0.5em 1em;
+        background-color: rgb(249, 249, 249);
+        border-radius: 0.5em;
+        p, h1 {
+          text-align: center;
+          color: var(--scoreText);
+        }
+        h1 {
+          font-size: 2.5em;
+        }
+      }
+    }
+  
+    .game-section {
+      position: relative;
+      width: 800px;
+      height: 480px;
+      margin-top: 1em;
+      transition: all 0.5s ease;
+
+      .hand-choice {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        gap: 2em;
+        background-image: url("../public/images/bg-triangle.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.5s ease;
+
+        .hidden {
+          opacity: 0;
+        
+          .choice {
+            opacity: 1;
+          }
+        }
+
+        &.hidden {
+          background-image: none;
+        }
+        
+        .top-row {
+          display: flex;
+          justify-content: center;
+          gap: 5em;
+        }
+
+        .bottom-row {
+          display: flex;
+          justify-content: center;
+        }
+
+        .p-move {
+          transform: translate(-3%, 60%) scale(1.2);
+          transition: all 0.5s ease;
+
+          &.p-shift {
+            transform: translate(-91%, 60%) scale(1.2);
+            transition: all 0.7s ease;
+          }
+        }
+
+        .s-move {
+          transform: translate(-143%, 60%) scale(1.2);
+          transition: all 0.5s ease;
+
+          &.s-shift {
+            transform: translate(-231%, 60%) scale(1.2);
+            transition: all 0.7s ease;
+          }
+        }
+
+        .r-move {
+          transform: translate(-73%, -56%) scale(1.2);
+          transition: all 0.5s ease;
+
+          &.r-shift {
+            transform: translate(-161%, -56%) scale(1.2);
+            transition: all 0.7s ease;
+          }
+        }
+      }
+
+      .hand-result {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 3em;
+        color: white;
+        transition: all 0.5s ease;
+
+        &.hidden {
+          opacity: 0;
+        }
+
+        & > * {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 3em;
+        }
+
+        .left-side {
+          display: flex;
+          flex-direction: column;
+          width: 30%;
+          gap: 5.5em;
+        }
+
+        .middle {
+          position: absolute;
+          top: 30%;
+          width: 20em;
+          height: 15em;
+          gap: 1em;
+
+          button {
+            padding: 0.8em 3em;
+            font-size: 1.2em;
+            font-weight: 500;
+            border-radius: 0.5em;
+            letter-spacing: 0.1em;
+            &:hover {
+              color: rgb(175, 18, 18);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .right-side {
+          display: flex;
+          flex-direction: column;
+          width: 30%;
+          gap: 5.5em;
+
+          .choice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(1.25);
+            transition: all 0.5s ease;
+          }
+
+          .pulse {
+            position: absolute;
+            top: 27%;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(245, 245, 245, 0.2);
+            border-radius: 100px;
+            animation: pulse 5s ease-out infinite;
+            .n1 {
+              transition-delay: 2s;
+            }
+          }
+        }
+
+        .waiting-bot {
+          width: 200px;
+          height: 200px;
+          background-color: rgb(25, 34, 62);
+          border-radius: 100px;
+        }
+      }
+
+      .hand-result.show-result {
+        transition: all 0.7s ease;
+        gap: 28em;
+      }
+    }
+
+    .choice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 200px;
+      position: relative;
+      border-radius: 100px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.paper {
+        width: 200px;
+        z-index: 10;
+        & > * {
+          position: absolute;
+          border-radius: 100%;
+        }
+
+        .circle-1 {
+          bottom: -5%;
+          height: 100%;
+          width: 100%;
+          background-color: rgb(40, 60, 185);
+        }
+  
+        .circle-2 {
+          top: 0;
+          height: 100%;
+          width: 100%;
+          background: var(--paper);
+        }
+  
+        .circle-3 {
+          top: 10%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background-color: rgb(178, 183, 206);
+        }
+  
+        .circle-4 {
+          top: 15%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background: var(--whiteGrad);
+        }
+      }
+
+      &.scissors {
+        width: 200px;
+        z-index: 10;
+        & > * {
+          position: absolute;
+          border-radius: 100%;
+        }
+
+        .circle-1 {
+          bottom: -5%;
+          height: 100%;
+          width: 100%;
+          background-color: rgb(189, 96, 35);
+        }
+  
+        .circle-2 {
+          top: 0;
+          height: 100%;
+          width: 100%;
+          background: var(--scissor);
+        }
+  
+        .circle-3 {
+          top: 10%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background-color: rgb(178, 183, 206);
+        }
+  
+        .circle-4 {
+          top: 15%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background: var(--whiteGrad);
+        }
+      }
+
+      &.rock {
+        width: 200px;
+        z-index: 10;
+        & > * {
+          position: absolute;
+          border-radius: 100%;
+        }
+
+        .circle-1 {
+          bottom: -5%;
+          height: 100%;
+          width: 100%;
+          background-color: rgb(145, 19, 47);
+        }
+  
+        .circle-2 {
+          top: 0;
+          height: 100%;
+          width: 100%;
+          background: var(--rock);
+        }
+  
+        .circle-3 {
+          top: 10%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background-color: rgb(178, 183, 206);
+        }
+  
+        .circle-4 {
+          top: 15%;
+          left: 12.5%;
+          height: 75%;
+          width: 75%;
+          background: var(--whiteGrad);
+        }
+      }
+
+      .hand-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+        width: 40%;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  
+    .game-rule-button {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      button {
+        padding: 0.5em 2em 0.5em 2em;
+        font-size: 1.2em;
+        color: white;
+        background-color: transparent;
+        border: 2px solid rgb(108, 108, 108);
+        border-radius: 0.5em;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(255, 255, 255, 0.1);
+        }
+      }
+    }
+  
+    .rules {
+      position: absolute;
+      top: 20%;
+      width: 500px;
+      height: 500px;
+      padding: 2em;
+      color: var(--headerOutline);
+      background: white;
+      border-radius: 1em;
+      z-index: 100;
+    }
+  }
+
+  .modal-rules {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20%;
+    width: 400px;
+    height: 200px;
+    padding: 2em;
+    background: white;
+    border-radius: 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transform: scale(1);
+    transition: 0.3s;
+    z-index: 1000;
+
+    .rules-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--darkText);
+
+      .close-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2em;
+        width: 2em;
+        padding: 0.5em;
+        border-radius: 2em;
+        &:hover {
+          background-color: #dbdbdb;
+          cursor: pointer;
+        }
+        
+      }
+    }
+
+    &.hidden {
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.3s;
+    }
+}
+}
+
+@keyframes pulse {
+  100% {
+    transform: scale(3);
+  }
+}

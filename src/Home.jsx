@@ -160,7 +160,15 @@ function Home() {
             </div>
           </a>
 
-          <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
+          {/* <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
+            <div className="gallery-container card gallery-6">
+              <div className="cardname">
+                <p>Weather API</p>
+              </div>
+            </div>
+          </a> */}
+
+          <a href="/janken" target={'_blank'}>
             <div className="gallery-container card gallery-6">
               <div className="cardname">
                 <p>Weather API</p>
