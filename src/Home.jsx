@@ -152,23 +152,23 @@ function Home() {
             </div>
           </a>
 
-          <a href="https://elegant-dragon-097141.netlify.app/07-notification%20page/" target={'_blank'}>
+          {/* <a href="https://elegant-dragon-097141.netlify.app/07-notification%20page/" target={'_blank'}>
             <div className="gallery-container card gallery-5">
               <div className="cardname">
                 <p>Notification Page</p>
               </div>
             </div>
-          </a>
-
-          {/* <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
-            <div className="gallery-container card gallery-6">
-              <div className="cardname">
-                <p>Weather API</p>
-              </div>
-            </div>
           </a> */}
 
           <a href="/janken" target={'_blank'}>
+            <div className="gallery-container card gallery-5">
+              <div className="cardname">
+                <p>Rock Paper Scissors</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
             <div className="gallery-container card gallery-6">
               <div className="cardname">
                 <p>Weather API</p>

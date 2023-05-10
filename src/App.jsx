@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Contact from "./Pages/Contact";
 import Home from "./Home";
-import Janken from "./Pages/Janken"
+import Janken from "./Pages/Janken/Janken"
 
 function App() {
   return (

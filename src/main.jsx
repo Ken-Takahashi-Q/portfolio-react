@@ -5,14 +5,14 @@ import App from './App'
 import './index.scss'
 import Home from './Home'
 import Contact from './Pages/Contact';
-import Janken from './Pages/Janken';
+import Janken from './Pages/Janken/Janken';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/cntact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/janken" element={<Janken />} />
       </Routes>
     </BrowserRouter>
