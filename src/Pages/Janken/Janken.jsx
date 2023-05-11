@@ -120,7 +120,16 @@ function Janken() {
           <div className={`hand-result ${showResult ? "show-result" : isHandPick ? "" : "hidden"}`}>
             <div className="hand-result left-side">
               <h2>YOU PICKED</h2>
-              <div className="pulse"></div>
+              {showWinner === "YOU WIN" ?
+                <>
+                  <div className="pulse n-1"></div>
+                  <div className="pulse n-2"></div>
+                  <div className="pulse n-3"></div>
+                  <div className="pulse n-4"></div>
+                </> :
+                null
+              }
+              
             </div>
 
             <div className={`hand-result middle ${showResult ? "" : "hidden"}`}>
@@ -142,14 +151,17 @@ function Janken() {
                 </div>
                 : <div className="waiting-bot"></div>
               }
-              <div className="pulse n-1"></div>
-              <div className="pulse n-2"></div>
-              <div className="pulse n-3"></div>
-              <div className="pulse n-4"></div>
+              {showWinner === "YOU LOSE" ?
+                <>
+                  <div className="pulse n-1"></div>
+                  <div className="pulse n-2"></div>
+                  <div className="pulse n-3"></div>
+                  <div className="pulse n-4"></div>
+                </> :
+                null
+              }
             </div>
-            
           </div>
-
         </div>
 
         <div className="game-rule-button">
@@ -166,6 +178,7 @@ function Janken() {
             <img src="/images/janken/icon-close.svg" alt="close"/>
           </div>
         </div>
+        <img src="/images/janken/image-rules.svg" alt="close"/>
       </div>
     </main>
   );

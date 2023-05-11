@@ -18,6 +18,7 @@ main {
   display: flex;  
   flex-direction: column;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   gap: 1em;
   background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
@@ -36,6 +37,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100vw;
+    height: 100vh;
     overflow: hidden;
 
     &.hidden {
@@ -64,7 +66,7 @@ main {
       align-items: center;
       width: 28em;
       margin: 2em 0 1em;
-      padding: 0.7em 1em 0.7em 1em;
+      padding: 0.5em 1em 0.5em 1em;
       font-size: 1.5em;
       background-color: transparent;
       border: 2px solid rgb(108, 108, 108);
@@ -75,9 +77,11 @@ main {
       }
   
       .game-score {
+        display: flex;
+        flex-direction: column;
         width: 6em;
         height: 4em;
-        padding: 0.5em 1em 0.5em 1em;
+        padding: 0.3em 1em 0.3em 1em;
         background-color: rgb(249, 249, 249);
         border-radius: 0.5em;
         p, h1 {
@@ -85,7 +89,8 @@ main {
           color: var(--scoreText);
         }
         h1 {
-          font-size: 2.5em;
+          font-size: 2em;
+          margin: -0.3em;
         }
       }
     }
@@ -111,6 +116,7 @@ main {
 
         .hidden {
           opacity: 0;
+          z-index: -10;
         
           .choice {
             opacity: 1;
@@ -207,7 +213,7 @@ main {
             border-radius: 0.5em;
             letter-spacing: 0.1em;
             &:hover {
-              color: rgb(175, 18, 18);
+              color: rgb(239, 49, 49);
               cursor: pointer;
             }
           }
@@ -226,19 +232,6 @@ main {
             transform: scale(1.25);
             transition: all 0.5s ease;
           }
-
-          .pulse {
-            position: absolute;
-            top: 27%;
-            width: 200px;
-            height: 200px;
-            background-color: rgba(245, 245, 245, 0.2);
-            border-radius: 100px;
-            animation: pulse 5s ease-out infinite;
-            .n1 {
-              transition-delay: 2s;
-            }
-          }
         }
 
         .waiting-bot {
@@ -246,6 +239,29 @@ main {
           height: 200px;
           background-color: rgb(25, 34, 62);
           border-radius: 100px;
+        }
+
+        .pulse {
+          position: absolute;
+          top: 27.5%;
+          width: 200px;
+          height: 200px;
+          background-color: rgba(245, 245, 245, 0.1);
+          border-radius: 100px;
+          animation: pulse 4s ease-out infinite;
+          z-index: 0;
+          &.n-1 {
+            animation-delay: 0s;
+          }
+          &.n-2 {
+            animation-delay: 1s;
+          }
+          &.n-3 {
+            animation-delay: 2s;
+          }
+          &.n-4 {
+            animation-delay: 3s;
+          }
         }
       }
 
@@ -429,13 +445,15 @@ main {
   }
 
   .modal-rules {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    justify-content: flex-start;
     top: 20%;
     width: 400px;
-    height: 200px;
+    height: 450px;
     padding: 2em;
+    gap: 2em;
     background: white;
     border-radius: 1em;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -453,15 +471,17 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 2em;
-        width: 2em;
+        height: 2.5em;
+        width: 2.5em;
         padding: 0.5em;
         border-radius: 2em;
+        transition: 0.3s;
+
         &:hover {
           background-color: #dbdbdb;
           cursor: pointer;
+          transition: 0.3s;
         }
-        
       }
     }
 
@@ -476,5 +496,163 @@ main {
 @keyframes pulse {
   100% {
     transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    .modal-rules {
+      justify-content: center;
+      top: 0;
+      height: 100vh;
+      
+      .rules-header {
+        display: block;
+        text-align: center;
+        
+        h1 {
+          position: absolute;
+          top: 16%;
+          left: 40%;
+        }
+
+        .close-button {
+          position: absolute;
+          bottom: 15%;
+          left: 45%;
+        }
+      }
+    }
+
+    .app-foreground {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5em 1em;
+      
+      .game-header {
+        margin: 0;
+        width: 100%;
+
+        img {
+          height: 3em;
+        }
+
+        .game-score {
+          width: 5em;
+        }
+      }
+
+      .game-section {
+        width: 100vw;
+        height: 100vw;
+
+        .hand-choice {
+          .top-row {
+            gap: 3.2em;
+          }
+
+          .p-move, .p-move.p-shift {
+            transform: translate(-3%, 0%);
+            transition: all 0.5s ease;
+          }
+  
+          .s-move, .s-move.s-shift {
+            transform: translate(-134%, 0%);
+            transition: all 0.5s ease;
+          }
+  
+          .r-move, .r-move.r-shift {
+            transform: translate(-69%, -120%);
+            transition: all 0.5s ease;
+          }
+        }
+
+        .hand-result {
+          display: grid;
+          grid-template-rows: repeat(2, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+          width: 100%;
+          gap: 1em;
+
+          &.show-result {
+            gap: 0;
+          }
+
+          .left-side {
+            grid-area: 1/1/2/2;
+            flex-direction: column-reverse;
+            width: 100%;
+            height: auto;
+            gap: 3em;
+          }
+
+          .right-side {
+            grid-area: 1/2/2/3;
+            flex-direction: column-reverse;
+            width: 100%;
+            height: auto;
+            gap: 3em;
+
+            .choice {
+              transform: none;
+            }
+
+            .pulse {
+              position: absolute;
+              top: 0%;
+              left: 10%;
+              width: 160px;
+              height: 160px;
+            }
+          }
+
+          .middle {
+            grid-area: 2/1/3/3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: auto;
+
+            button {
+              background-color: #fff;
+              color: black;
+            }
+          }
+
+          .choice {
+            &.paper, &.scissors, &.rock {
+              width: 160px;
+              height: 160px;
+            }
+          }
+
+          .pulse {
+            position: absolute;
+            top: 0%;
+            left: 7.5%;
+            width: 160px;
+            height: 160px;
+          }
+          
+          h2 {
+            font-size: 1.3em;
+          }
+        }
+      }
+
+      .game-rule-button {
+        position: inherit;
+      }
+
+      .choice {
+        &.paper, &.scissors, &.rock {
+          width: 160px;
+          height: 160px;
+        }
+      }
+    }
   }
 }
