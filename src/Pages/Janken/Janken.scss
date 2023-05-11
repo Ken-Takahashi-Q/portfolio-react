@@ -220,6 +220,7 @@ main {
         }
 
         .right-side {
+          position: relative;
           display: flex;
           flex-direction: column;
           width: 30%;
@@ -500,6 +501,7 @@ main {
   }
 }
 
+// 2K screen
 @media only screen and (max-width: 600px) {
   main {
     .modal-rules {
@@ -530,7 +532,12 @@ main {
       justify-content: space-between;
       align-items: center;
       padding: 1.5em 1em;
+      gap: 2em;
       
+      .white-filter {
+        display: none;
+      }
+
       .game-header {
         margin: 0;
         width: 100%;
@@ -554,17 +561,17 @@ main {
           }
 
           .p-move, .p-move.p-shift {
-            transform: translate(-3%, 0%);
+            transform: translate(2%, 0%);
             transition: all 0.5s ease;
           }
   
           .s-move, .s-move.s-shift {
-            transform: translate(-134%, 0%);
+            transform: translate(-130%, 0%);
             transition: all 0.5s ease;
           }
   
           .r-move, .r-move.r-shift {
-            transform: translate(-69%, -120%);
+            transform: translate(-64%, -120%);
             transition: all 0.5s ease;
           }
         }
@@ -590,21 +597,14 @@ main {
 
           .right-side {
             grid-area: 1/2/2/3;
+            position: relative;
             flex-direction: column-reverse;
+            justify-content: space-between;
             width: 100%;
             height: auto;
-            gap: 3em;
 
             .choice {
               transform: none;
-            }
-
-            .pulse {
-              position: absolute;
-              top: 0%;
-              left: 10%;
-              width: 160px;
-              height: 160px;
             }
           }
 
@@ -632,7 +632,7 @@ main {
           .pulse {
             position: absolute;
             top: 0%;
-            left: 7.5%;
+            left: 10%;
             width: 160px;
             height: 160px;
           }
@@ -640,6 +640,11 @@ main {
           h2 {
             font-size: 1.3em;
           }
+        }
+
+        .hand-result.show-result {
+          transition: all 0.7s ease;
+          gap: 0;
         }
       }
 
@@ -651,6 +656,68 @@ main {
         &.paper, &.scissors, &.rock {
           width: 160px;
           height: 160px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  main {
+    .app-foreground {
+      .game-section {
+        .hand-choice {
+
+          .top-row {
+            gap: 2.5em;
+          }
+
+          .p-move, .p-move.p-shift {
+            transform: translate(8%, 0%);
+            transition: all 0.5s ease;
+          }
+
+          .s-move, .s-move.s-shift {
+            transform: translate(-117%, 0%);
+            transition: all 0.5s ease;
+          }
+
+          .r-move, .r-move.r-shift {
+            transform: translate(-55%, -120%);
+            transition: all 0.5s ease;
+          }
+        }
+
+        .hand-result {
+          .middle {
+            grid-area: 2/1/3/3;
+            gap: 0.5em;
+
+            h1 {
+              font-size: 2em;
+            }
+
+            button {
+              padding: 0.5em 2em;
+              font-size: 1em;
+            }
+          }
+
+          .right-side {
+            gap: 2em;
+          }
+
+          .pulse {
+            position: absolute;
+            left: 6%;
+            width: 160px;
+            height: 160px;
+          }
+        }
+
+        .hand-result.show-result {
+          transition: all 0.7s ease;
+          gap: 0;
         }
       }
     }
