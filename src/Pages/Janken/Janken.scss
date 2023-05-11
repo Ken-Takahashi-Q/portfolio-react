@@ -139,21 +139,21 @@ main {
         }
 
         .p-move {
-          transform: translate(-3%, 60%) scale(1.2);
+          transform: translate(-3%, 66%) scale(1.2);
           transition: all 0.5s ease;
 
           &.p-shift {
-            transform: translate(-91%, 60%) scale(1.2);
+            transform: translate(-91%, 66%) scale(1.2);
             transition: all 0.7s ease;
           }
         }
 
         .s-move {
-          transform: translate(-143%, 60%) scale(1.2);
+          transform: translate(-143%, 66%) scale(1.2);
           transition: all 0.5s ease;
 
           &.s-shift {
-            transform: translate(-231%, 60%) scale(1.2);
+            transform: translate(-231%, 66%) scale(1.2);
             transition: all 0.7s ease;
           }
         }
