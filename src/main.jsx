@@ -6,6 +6,7 @@ import './index.scss'
 import Home from './Home'
 import Contact from './Pages/Contact';
 import Janken from './Pages/Janken/Janken';
+import Form from './Pages/Form/Form';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/janken" element={<Janken />} />
+        <Route path="/multi-step-form" element={<Form />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
