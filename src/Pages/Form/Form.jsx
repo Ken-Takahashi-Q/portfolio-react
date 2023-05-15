@@ -9,6 +9,7 @@ function Form() {
     {step: 1, name: "", email: "", phone: ""},
     {step: 2, plan: "", length: "monthly"},
     {step: 3, add_ons: [false, false, false]},
+    {step: 4, currentPrice: 0, selectedAddOns: {}, selectedAddOnPrices: {}, addOnPrices: 0}
   ]);
 
   const stepName = [
@@ -43,6 +44,29 @@ function Form() {
     {id: 3, name: "Customizable profile", detail: "Custom theme on your profile", price: 2},
   ]
 
+  useEffect(() => {
+    if (currentStep === 3) {
+      const selectedAddOns = addOns.filter((addOn, index) => formData[2].add_ons[index]).map((addOn) => {
+        return { name: addOn.name, price: addOn.price };
+      });
+    
+      const currentPrice = planData.find((plan) => plan.plan === formData[1].plan).price;
+      const selectedAddOnPrices = addOns.filter((addOn, index) => formData[2].add_ons[index]).map((addOn) => addOn.price);
+      const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
+  
+      setFormData(prevFormData => [
+        ...prevFormData.slice(0, 3),
+        {
+          ...prevFormData[3],
+          currentPrice,
+          selectedAddOns,
+          selectedAddOnPrices,
+          addOnPrices: addOnPrices,
+        }
+      ]);
+    }
+  }, [formData[2].add_ons]);
+
   const handleInputChange = (type, value) => {
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
@@ -69,11 +93,11 @@ function Form() {
     });
   }
 
-  const handleSwitchChange = () => {
-    const newPlan = formData[currentStep - 1].length === "monthly" ? "yearly" : "monthly"
+  const handleChangeLength = () => {
+    const newPlan = formData[1].length === "monthly" ? "yearly" : "monthly"
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
-      updatedFormData[currentStep - 1].length = newPlan;
+      updatedFormData[1].length = newPlan;
       return updatedFormData;
     });
   };
@@ -87,12 +111,12 @@ function Form() {
       return updatedFormData;
     });
   };
-  
+
   const handleGoBack = () => {
     setCurrentStep(currentStep - 1);
   }
-  
-  const handleGoNext = () => {
+
+  const validateForm = () => {
     let isError = false;
     if (currentStep === 1) {
       inputField.forEach((field) => {
@@ -123,15 +147,22 @@ function Form() {
     } else if (currentStep === 2 && formData[1].plan === "") {
       isError = true;
     }
+    return isError;
+  }
+  
+  const handleGoNext = () => {
+    const isError = validateForm();
 
     if (!isError) {
       setCurrentStep(currentStep + 1);
     }
   }
 
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
+  const handleJumpTo = (target) => {
+    if (target < currentStep) {
+      setCurrentStep(target);
+    }
+  }
 
   return (
     <div className="multi-step-form">
@@ -139,7 +170,20 @@ function Form() {
         <div className="form-navbar">
           {stepName.map((value) => (
             <div className="step" key={value.step}>
-              <div className={`step-number ${currentStep === value.step ? "current" : ""}`}>{value.step}</div>
+              {currentStep < 5 ?
+                <div
+                  className={`step-number ${currentStep === value.step ? "current" : ""}`}
+                  onClick={() => handleJumpTo(value.step)}
+                >
+                  {value.step}
+                </div> :
+                <div
+                  className={`step-number ${value.step === 4 ? "current" : ""}`}
+                >
+                  {value.step}
+                </div>
+              }
+              
               <div className="step-info">
                 <p>STEP {value.step}</p>
                 <h3>{value.name}</h3>
@@ -148,12 +192,16 @@ function Form() {
           ))}
         </div>
 
-        <div className="form-field">
-          <div className="form-field upper">
-            <div className="form-field header">
-              <h1>{headerText[currentStep-1].header}</h1>
-              <p>{headerText[currentStep-1].text}</p>
-            </div>
+        {currentStep < 5 ?
+          <div className="form-field">
+            <div className="form-field-upper">
+              {currentStep < 5 ?
+                <div className="form-field header">
+                  <h1>{headerText[currentStep-1].header}</h1>
+                  <p>{headerText[currentStep-1].text}</p>
+                </div> :
+                null
+              }
 
               {currentStep === 1 ?
                 <div className="form-field data-step-1">
@@ -203,7 +251,7 @@ function Form() {
 
                   <div className="plan-type">
                     <h4 className={`${formData[1].length === "monthly" ? "bolder" : ""}`}>Monthly</h4>
-                    <div className={`time-slider`} onClick={handleSwitchChange}>
+                    <div className={`time-slider`} onClick={handleChangeLength}>
                       <div className={`circle ${formData[1].length === "monthly" ? "" : "slide"}`}></div>
                     </div>
                     <h4 className={`${formData[1].length === "monthly" ? "" : "bolder"}`}>Yearly</h4>
@@ -241,16 +289,70 @@ function Form() {
                 </div> :
                 null
               }
-              
-            
-          </div>
+                
+              {currentStep === 4 ?
+                <div className="form-field data-step-4">
+                  <div className="order">
+                    <div className="bill-detail">
+                      <div className="bill-left">
+                        <h4><span>{`${formData[1].plan} (${formData[1].length.charAt(0).toUpperCase() + formData[1].length.slice(1)})`}</span></h4>
+                        <p className="change-length" onClick={handleChangeLength}>Change</p>
+                      </div>
+                      <div className="bill-price">
+                        {formData[1].length === "monthly" ?
+                          <h3>${formData[3].currentPrice}/mo</h3> :
+                          <h3>${formData[3].currentPrice * 10}/yr</h3>
+                        }
+                      </div>
+                    </div>
+                    <span className="line"></span>
 
-          <div className="form-field menu">
-              <a className={`go-back ${currentStep === 1 ? "hidden" : ""}`} onClick={handleGoBack}>Go Back</a>
-              <button onClick={handleGoNext}>Next Step</button>
+                    {formData[3].selectedAddOns.map((value) => (
+                      <div className="bill-detail">
+                        <div className="bill-left">
+                          <p>{value.name}</p>
+                        </div>
+                        
+                        <div className="bill-price">
+                          {formData[1].length === "monthly" ?
+                            <h4>+${value.price}/mo</h4>:
+                            <h4>+${value.price*10}/yr</h4>
+                          }
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                        
+                  <div className="bill-total">
+                    <p>Total (per {formData[1].length.replace(/ly$/, "")})</p>
+                    {formData[1].length === "monthly" ?
+                      <h2>+${formData[3].currentPrice + formData[3].addOnPrices}/mo</h2> :
+                      <h2>+${(formData[3].currentPrice + formData[3].addOnPrices) * 10}/yr</h2>
+                    }
+                  </div>
+                </div> :
+                null
+              }
             </div>
 
-        </div>
+            <div className="form-field menu">
+              <a className={`go-back ${currentStep === 1 ? "hidden" : ""}`} onClick={handleGoBack}>Go Back</a>
+              <button className={`${currentStep === 4 ? "confirm" : ""}`} onClick={handleGoNext}>{currentStep === 4 ? "Confirm" : "Next Step"}</button>
+            </div>
+
+          </div> :
+          null
+        }
+
+        {currentStep === 5 ?
+          <div className="thank-you">
+            <img src="/images/multi-step-form/icon-thank-you.svg"></img>
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hope you have fun using our platform.
+              If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+          </div> :
+          null
+        }
       </div>
     </div>
   );
