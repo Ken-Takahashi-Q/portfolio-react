@@ -526,6 +526,11 @@
         .plan-grid {
           grid-template-rows: 1fr 1fr 1fr;
           grid-template-columns: 1fr;
+
+          .card {
+            flex-direction: row;
+            gap: 1em;
+          }
         }
       }
   
