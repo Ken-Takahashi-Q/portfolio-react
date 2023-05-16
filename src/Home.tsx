@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react'
 import './Home.scss'
 import Navbar from './Pages/Components/Navbar'
@@ -6,7 +7,7 @@ import { Collapse } from 'antd';
 import {RightCircleOutlined} from '@ant-design/icons'
 import Gallery from './Pages/Components/Gallery';
 
-function Home() {
+const Home: React.FC = () => {
   const { Panel } = Collapse;
   const [showContact, setShowContact] = useState(false);
 
@@ -21,8 +22,8 @@ function Home() {
     JP: new Date(),
   }
 
-  const getDuration = (start, end) => {
-    const diffInMs = Math.abs(end - start);
+  const getDuration = (start: Date, end: Date): string => {
+    const diffInMs = Math.abs(end.getTime() - start.getTime());
     const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
     const years = Math.floor(diffInDays / 365.25);
@@ -49,7 +50,7 @@ function Home() {
           {/* <h1>Profile pic</h1> */}
         </div>
         <div className="card-round card-2">
-          <h1 className="fullname">Yathip Takahashi</h1>
+          <h1 className="fullname">Yathip<br></br>Takahashi</h1>
           <span className="nickname">
             <h1 className="nickname letter-1">K</h1>
             <h1 className="nickname letter-2">E</h1>
@@ -74,9 +75,9 @@ function Home() {
         <div className="card-round card-5 skill">
           <h1>Skills</h1>
           <ul>
-            <li>HTML/CSS/SCSS</li>
+            <li>HTML/CSS/<br></br>SCSS</li>
             <li>JavaScript React</li>
-            <li>Tailwind SCSS</li>
+            <li>Next/Tailwind</li>
             <li>Python</li>
           </ul>
         </div>
@@ -102,7 +103,6 @@ function Home() {
             </a>
 
             <a className="resume" href="/resume.pdf">
-              
               <h3>Resume</h3>
             </a>
 
@@ -231,4 +231,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;
