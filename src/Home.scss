@@ -365,11 +365,12 @@
 
 .gallery {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   position: relative;
   margin-bottom: 3em;
   padding: 0 3em;
+  gap: 1em;
   width: 100%;
   overflow: hidden;
 
@@ -377,8 +378,8 @@
     display: grid;
     position: relative;
     grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 1fr 1fr 1fr 2fr;
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
     height: 100%;
     gap: 1em;
 
@@ -445,41 +446,42 @@
         border-radius: 5em;
       }
     }
+  }
 
-    .gallery-text {
-      grid-area: 1/4/3/5;
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      flex-direction: column;
-      height: 100%;
-      padding: 2em;
-      background-color: #487c7a;
+  .gallery-text {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    padding: 2em;
+    gap: 3em;
+    background-color: #487c7a;
 
-      .link-button {
-        padding: 1em;
-        background-color: black;
-        border-radius: 1em;
-        &:hover {
-          background-color: #373737;
-          border: 1px solid white;
-        }
-      }
-
+    .link-button {
+      padding: 1em;
+      background-color: black;
+      border-radius: 1em;
       &:hover {
-        background-color: #7aaa98;
-        transition: all 0.7s ease;
-
-        .gallery-container {
-          transform: translateX(-30%);
-          height: 5em;
-        }
+        background-color: #373737;
+        border: 1px solid white;
       }
+    }
 
-      &:not(:hover) {
-        transition: all 0.7s ease;
+    &:hover {
+      background-color: #7aaa98;
+      transition: all 0.7s ease;
 
+      .gallery-container {
+        transform: translateX(-30%);
+        height: 5em;
       }
+    }
+
+    &:not(:hover) {
+      transition: all 0.7s ease;
+
     }
   }
 }
@@ -487,6 +489,7 @@
 .experience {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   padding: 0 3em;
   gap: 1em;
@@ -495,11 +498,20 @@
     ul {
       font-size: 20px;
       list-style: none;
+      li {
+        margin-bottom: 1em;
+      }
+    }
+
+    #exp-2 {
+      padding-left: 2em;
     }
   }
 
   .right-side {
+    display: flex;
     padding: 0;
+    height: 200px;
     gap: 0;
     background-color: #fafafa;
     border-radius: 2em;
@@ -509,6 +521,7 @@
       justify-content: center;
       align-items: center;
       padding: 1em;
+      height: 100%;
       transition: all 0.5s ease;
 
       &.react {
@@ -559,7 +572,7 @@
 @media only screen and (max-width: 540px) {
   .App {
     width: 100vw;
-    overflow: hidden;
+    overflow: scroll;
 
     .card-container {
       width: 100%;
@@ -705,32 +718,66 @@
     }
 
     .gallery {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      position: relative;
-      margin-bottom: 3em;
-      padding: 0 3em;
+      flex-direction: column;
+      padding: 0;
       width: 100%;
-      overflow: hidden;
     
       .gallery-container {
-        display: grid;
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 0.5em;
+        display: flex;
+        width: 100%;
+        overflow: scroll;
     
         .card {
-          display: flex;
-          justify-content: center;
+          width: 200px;
           height: 240px;
-          padding: 0 0 0.5em;
           border-radius: 0.5em;
-    
-          .cardname {
-            padding: 0.3em;
-            border-radius: 0.5em;
-          }
+        }
+      }
+
+      .gallery-text {
+        width: 100%;
+        gap: 1em;
+        background: linear-gradient(180deg, #487c7a, transparent);
+      }
+    }
+  }
+
+  .experience {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1.5em;
+    gap: 1em;
+
+    .left-side {
+      padding: 0;
+
+      #exp-2 {
+        padding: 0;
+      }
+    }
+  
+    .right-side {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0;
+      height: 200px;
+      gap: 0;
+      background-color: #fafafa;
+      border-radius: 1em;
+  
+      .logo {
+        padding: 1em;
+        height: 100%;
+        transition: all 0.5s ease;
+  
+        &.react, &.redux {
+          border-radius: 0;
+        }
+  
+        img {
+          width: 4em;
+          height: 4em;
         }
       }
     }

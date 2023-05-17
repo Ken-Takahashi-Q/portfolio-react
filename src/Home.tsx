@@ -76,8 +76,8 @@ const Home: React.FC = () => {
           <h1>Skills</h1>
           <ul>
             <li>HTML/CSS/<br></br>SCSS</li>
-            <li>JavaScript React</li>
-            <li>Next/Tailwind</li>
+            <li>JavaScript/<br></br>TypeScript</li>
+            <li>React.JS/<br></br>Next/Tailwind</li>
             <li>Python</li>
           </ul>
         </div>
@@ -93,16 +93,16 @@ const Home: React.FC = () => {
 
         <div className={`card-round card-7 ${showContact ? 'show' : 'hide'}`}>
           <div className="contact-container">
-            <a className="linkedin" href="https://www.linkedin.com/in/k-tkhashi/">
+            <a className="linkedin" href="https://www.linkedin.com/in/k-tkhashi/" target="_blank">
               <img src="/images/logo-linkedin.png"></img>
               <h3>LinkedIn</h3>
             </a>
-            <a className="github" href="https://github.com/Ken-Takahashi-Q">
+            <a className="github" href="https://github.com/Ken-Takahashi-Q" target="_blank">
               <img src="/images/logo-github.png"></img>
               <h3>Github</h3>
             </a>
 
-            <a className="resume" href="/resume.pdf">
+            <a className="resume" href="/resume.pdf" target="_blank">
               <h3>Resume</h3>
             </a>
 
@@ -176,14 +176,13 @@ const Home: React.FC = () => {
               </div>
             </div>
           </a>
-
-          <div className="gallery-text">
-            <div>
-              <h1>Portfolio</h1>
-              <h3>Developed various categories of website projects based on both self-created and provided web design as hobby</h3>
-            </div>
-            <a className="link-button" href="https://www.frontendmentor.io/profile/Ken-Takahashi-Q" target="_blank">Special thanks to <strong>frontendmentor.io</strong></a>
+        </div>
+        <div className="gallery-text">
+          <div>
+            <h1>Portfolio</h1>
+            <h3>Various categories of projects based on both self-created and provided web design as hobby</h3>
           </div>
+          <a className="link-button" href="https://www.frontendmentor.io/profile/Ken-Takahashi-Q" target="_blank">Special thanks to <strong>frontendmentor.io</strong></a>
         </div>
       </div>
 
@@ -193,7 +192,7 @@ const Home: React.FC = () => {
             <li>
               <span><strong>Developed</strong> a <strong>marketplace</strong> management website for organizing and tracking merchandise</span>
             </li>
-            <li style={{paddingLeft: "2em"}}>
+            <li id="exp-2">
               <span>
                 <strong>Delicately</strong> designed. Contributed in planning and testing phases under <span>agile</span> project management
               </span>
@@ -225,7 +224,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <span className="warning">Under reconstruction</span>
+      {/* <span className="warning">Under reconstruction</span> */}
 
     </div>
   )
