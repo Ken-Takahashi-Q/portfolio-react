@@ -168,11 +168,26 @@ const Home: React.FC = () => {
             </div>
           </a>
 
-          <a href="/multi-step-form" target={'_blank'}>
-          {/* <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}> */}
+          <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
             <div className="gallery-container card gallery-6">
               <div className="cardname">
                 <p>Weather API</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="/multi-step-form" target={'_blank'}>
+            <div className="gallery-container card gallery-7">
+              <div className="cardname">
+                <p>Multi-step Form</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://elegant-dragon-097141.netlify.app/11-parallax%20page/" target={'_blank'}>
+            <div className="gallery-container card gallery-8">
+              <div className="cardname">
+                <p>Parallax Effect</p>
               </div>
             </div>
           </a>

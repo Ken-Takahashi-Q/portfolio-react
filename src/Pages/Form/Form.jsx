@@ -65,7 +65,7 @@ function Form() {
         }
       ]);
     }
-  }, [formData[2].add_ons]);
+  }, [formData[2].add_ons, currentStep]);
 
   const handleInputChange = (type, value) => {
     setFormData((prevState) => {

@@ -377,7 +377,7 @@
   .gallery-container {
     display: grid;
     position: relative;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     width: 60%;
     height: 100%;
@@ -391,6 +391,13 @@
       height: 240px;
       padding: 0 0 0.5em;
       border-radius: 1em;
+      transition: 0.5s;
+
+      &:hover {
+        filter: brightness(0.8);
+        transform: scale(0.98);
+        transition: 0.5s;
+      }
 
       & > * {
         background-repeat: none;
@@ -430,6 +437,18 @@
       &.gallery-6 {
         grid-area: 2/3/3/4;
         background-image: url("/images/weather-api.jpeg");
+        @include gallery-styles;
+      }
+
+      &.gallery-7 {
+        grid-area: 3/1/4/2;
+        background-image: url("/images/multi-step-form.jpeg");
+        @include gallery-styles;
+      }
+
+      &.gallery-8 {
+        grid-area: 3/2/4/3;
+        background-image: url("/images/parallax.jpeg");
         @include gallery-styles;
       }
 
@@ -513,7 +532,7 @@
     padding: 0;
     height: 200px;
     gap: 0;
-    background-color: #fafafa;
+    background-color: #f2f2f2;
     border-radius: 2em;
 
     .logo {
@@ -718,7 +737,7 @@
     }
 
     .gallery {
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding: 0;
       width: 100%;
     
