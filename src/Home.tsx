@@ -5,7 +5,7 @@ import Navbar from './Pages/Components/Navbar'
 import { Grid, Row, Col } from 'antd'
 import { Collapse } from 'antd';
 import {RightCircleOutlined} from '@ant-design/icons'
-import Gallery from './Pages/Components/Gallery';
+import Gallery from './Pages/Components/Gallery'
 
 const Home: React.FC = () => {
   const { Panel } = Collapse;
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
 
     const years = Math.floor(diffInDays / 365.25);
-    const months = Math.floor((diffInDays % 365.25) / 30);
+    const months = Math.round((diffInDays % 365.25) / 30);
   
     return `${years} ${years > 1 ? 'years' : 'year'} ${months} ${months > 1 ? 'months' : 'month'}`;
   }
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
           <ul>
             <li>HTML/CSS/<br></br>SCSS</li>
             <li>JavaScript/<br></br>TypeScript</li>
-            <li>React.JS/<br></br>Next/Tailwind</li>
+            <li>React/Next/<br></br>Tailwind</li>
             <li>Python</li>
           </ul>
         </div>
@@ -118,88 +118,7 @@ const Home: React.FC = () => {
 
       <span className={`separator ${showContact ? "show" : ""}`}></span>
 
-      <div className="gallery">
-        <div className="gallery-container">
-          <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
-            <div className="gallery-container card gallery-1">
-              <div className="cardname">
-                <p>Tips Calculator</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://lustrous-tiramisu-ddab0e.netlify.app/" target={'_blank'}>
-            <div className="gallery-container card gallery-2">
-              <div className="cardname">
-                <p>Todo list</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://mancala-boardgame.netlify.app/" target={'_blank'}>
-            <div className="gallery-container card gallery-3">
-              <div className="cardname">
-                <p>Board Game</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://elegant-dragon-097141.netlify.app/09-expense%20chart/" target={'_blank'}>
-            <div className="gallery-container card gallery-4">
-              <div className="cardname">
-                <p>Expense Chart</p>
-              </div>
-            </div>
-          </a>
-
-          {/* <a href="https://elegant-dragon-097141.netlify.app/07-notification%20page/" target={'_blank'}>
-            <div className="gallery-container card gallery-5">
-              <div className="cardname">
-                <p>Notification Page</p>
-              </div>
-            </div>
-          </a> */}
-
-          <a href="/janken" target={'_blank'}>
-            <div className="gallery-container card gallery-5">
-              <div className="cardname">
-                <p>Rock Paper Scissors</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://elegant-dragon-097141.netlify.app/14-weather%20api/" target={'_blank'}>
-            <div className="gallery-container card gallery-6">
-              <div className="cardname">
-                <p>Weather API</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="/multi-step-form" target={'_blank'}>
-            <div className="gallery-container card gallery-7">
-              <div className="cardname">
-                <p>Multi-step Form</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://elegant-dragon-097141.netlify.app/11-parallax%20page/" target={'_blank'}>
-            <div className="gallery-container card gallery-8">
-              <div className="cardname">
-                <p>Parallax Effect</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className="gallery-text">
-          <div>
-            <h1>Portfolio</h1>
-            <h3>Various categories of projects based on both self-created and provided web design as hobby</h3>
-          </div>
-          <a className="link-button" href="https://www.frontendmentor.io/profile/Ken-Takahashi-Q" target="_blank">Special thanks to <strong>frontendmentor.io</strong></a>
-        </div>
-      </div>
+      <Gallery></Gallery>
 
       <div className="experience">
         <div className="experience left-side">
