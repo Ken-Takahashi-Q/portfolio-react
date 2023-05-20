@@ -1,0 +1,457 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 1em 2em 0 2em;
+  width: 800px;
+  gap: 1em;
+  transition: all 0.75s ease;
+
+  .card-round {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em 2em;
+    background: linear-gradient(0deg, rgb(127, 127, 127), rgb(176, 176, 176));
+    border-radius: 2em;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .card-1 {
+    grid-area: 1/1/3/2;
+    background-image: url("/images/profile.jpg");
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+  }
+  .card-2 {
+    grid-area: 1/2/2/3;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .fullname {
+      position: absolute;
+    }
+
+    .nickname {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-size: 2em;
+
+      .letter-1 {
+        transform: translateY(-90%);
+      }
+
+      .letter-2 {
+        transform: translateY(80%);
+      }
+
+      .letter-3 {
+        transform: translateY(-120%);
+      }
+    }
+
+    &:hover {
+      h1 {
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      .nickname {
+        opacity: 1;
+        transition: all 0.6s ease;
+
+        & > * {
+          transform: none;
+        }
+
+        .letter-2 {
+          transition-delay: 0.1s;
+        }
+
+        .letter-3 {
+          transition-delay: 0.2s;
+        }
+      }
+    }
+
+    &:not(:hover) {
+      h1 {
+        opacity: 1;
+        transition: all 1.2s ease;
+      }
+      .nickname {
+        opacity: 0;
+        transition: all 1.2s ease;
+      }
+      .letter-2 {
+        transition-delay: 0.1s;
+      }
+      .letter-3 {
+        transition-delay: 0.2s;
+      }
+    }
+  }
+  .card-3 {
+    grid-area: 1/3/2/4;
+  }
+  .card-4 {
+    grid-area: 2/2/3/4;
+    position: relative;
+    transition: all 0.5s ease;
+
+    h1 {
+      transform: translateY(-30%);
+    }
+
+    .experience {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .date-sliding, .job-sliding, .duration-sliding {
+        position: absolute;
+      }
+      .date-sliding {
+        left: 6.5%;
+      }
+      .job-sliding {
+        left: 40%;
+      }
+      .duration-sliding {
+        right: -30%;
+      }
+    }
+
+    &:hover {
+      transition: all 0.5s ease;
+
+      .date-sliding {
+        left: -30%;
+        transition: all 0.5s ease;
+      }
+      .job-sliding {
+        left: 6.5%;
+      }
+      .duration-sliding {
+        right: 7%;
+      }
+    }
+    &:not(:hover) .date-sliding, .job-sliding, .duration-sliding {
+      transition: all 0.5s ease;
+    }
+  }
+  .card-5 {
+    grid-area: 3/1/4/3;
+
+    ul  {
+      display: flex;
+      gap: 2em;
+      font-weight: 500;
+      list-style: none;
+    }
+  }
+  .card-6 {
+    grid-area: 3/3/4/4;
+    position: relative;
+    transition: all 0.5s ease;
+    overflow: hidden;
+
+    .find-out-more {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.5s ease;
+
+      h1 {
+        word-wrap: break-word;
+      }
+
+      .arrow {
+        position: absolute;
+        right: -25%;
+      }
+    }
+    
+    &:hover {
+      cursor: pointer;
+
+      h1 {
+        transform: translateX(-5%);
+        transition: all 0.5s ease;
+      }
+
+      .arrow {
+        right: 10%;
+        transform: rotate(90deg);
+      }
+    }
+
+    &:not(:hover) h1, .arrow {
+      transition: all 0.5s ease;
+    }
+  }
+  .card-7 {
+    grid-area: 4/1/5/4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+
+    .contact-container {
+      display: flex;
+      align-items: center;
+      padding: 1em 2em;
+      gap: 2em;
+
+      a {
+        display: flex;
+        align-items: center;
+        padding: 0.5em 1em;
+        gap: 0.5em;
+        border-radius: 1em;
+
+        &.linkedin {
+          color: black;
+          background-color: rgb(222, 222, 222);
+
+          &:hover {
+            background-color: rgb(243, 243, 243);
+            transition: all 0.3s ease;
+          }
+
+          &:not(:hover) {
+            transition: all 0.3s ease;
+          }
+        }
+        
+        &.github {
+          background-color: #000000;
+          
+          &:hover {
+            background-color: rgb(63, 63, 63);
+            transition: all 0.3s ease;
+          }
+
+          &:not(:hover) {
+            transition: all 0.3s ease;
+          }
+        }
+
+        &.resume {
+          background-color: rgb(203, 52, 52);
+          
+          &:hover {
+            background-color: rgb(212, 91, 91);
+            transition: all 0.3s ease;
+          }
+
+          &:not(:hover) {
+            transition: all 0.3s ease;
+          }
+        }
+
+        img {
+          width: 1.5em;
+          height: 1.5em;
+        }
+      }
+    }
+
+    &.hide {
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.7s ease;
+    }
+
+    &.show {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      visibility: visible;
+      height: auto;
+      transform: scale(1);
+      opacity: 1;
+      transition: all 0.7s ease;
+    }
+    
+    &:target ~ .card-7 {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .arrow {
+      transition: all 0.4s ease;
+
+      &:hover {
+        transform: translateY(-10%);
+        transition: all 0.4s ease;
+      }
+
+      .hide {
+        transform: scale(0);
+        opacity: 0;
+      } 
+    }
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .card-container {
+    width: 100%;
+    padding: 1em 1em 0 1em;
+    gap: 0.7em;
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1em;
+    }
+
+    .card-round {
+      padding: 0.6em;
+      border-radius: 1em;
+    }
+
+    .card-1 {
+      background-repeat: none;
+      background-position: center;
+      background-size: cover;
+    }
+    .card-2 {
+      .fullname {
+        padding-right: 0.4em;
+        word-break: break-all;
+      }
+
+      .nickname {
+        font-size: 1.8em;
+      }
+    }
+    .card-4 {
+      display: flex;
+      flex-direction: column;
+  
+      h1 {
+        transform: translateY(-30%);
+      }
+  
+      .experience {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 4em;
+  
+        .date-sliding {
+          left: 10%;
+          top: 40%;
+        }
+        .job-sliding {
+          left: 20%;
+          top: 60%;
+        }
+        .duration-sliding {
+          left: 10%;
+          bottom: -20%;
+          opacity: 0;
+        }
+      }
+  
+      &:hover {
+        .date-sliding {
+          top: 10%;
+          opacity: 0;
+          transition: all 0.5s ease;
+        }
+        .job-sliding {
+          top: 40%;
+        }
+        .duration-sliding {
+          bottom: 8%;
+          opacity: 1;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+    .card-5 {
+      ul  {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+        transition: 0.5s;
+        li {
+          font-size: 0.8em;
+        }
+      }
+
+      &:hover {
+        ul {
+          transform: translateX(-20%);
+          transition: 0.5s;
+        }
+      }
+    }
+    .card-6 {
+      .find-out-more {
+        text-align: center;
+        transition: 1s;
+        .arrow {
+          top: -50%;
+          transform: translate(-15%, -20%) rotate(90deg);
+        }
+      }
+      
+      &:hover {
+        h1 {
+          transform: translateY(140%);
+          transition: 1s;
+        }
+  
+        .arrow {
+          left: 12%;
+          bottom: -120%;
+          transform: rotate(90deg);
+          transition: 1s;
+        }
+      }
+  
+      &:not(:hover) h1, .arrow {
+        transition: all 0.5s ease;
+      }
+    }
+    .card-7 {
+      .contact-container {
+        padding: 0;
+        gap: 0.5em;
+  
+        a {
+          padding: 0.5em;
+          border-radius: 0.7em;
+          font-size: 0.8em;
+  
+          img {
+            width: 1.2em;
+            height: 1.2em;
+          }
+        }
+      }
+    }
+  }
+
+  .separator {
+    height: 0em;
+    &.show {
+      height: 1em;
+    }
+  }
+}

@@ -71,7 +71,7 @@ const Gallery = () => {
       </a> */}
     <div className="gallery-text">
       <div>
-        <a className="gallery-text go-to" href="/projects">
+        <a className="gallery-text go-to" href="https://elegant-dragon-097141.netlify.app/">
           <h1>Portfolio</h1>
           <div className="icon-bg-scale"><ArrowRightOutlined /></div>
         </a>

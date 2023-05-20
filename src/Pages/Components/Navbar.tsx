@@ -8,9 +8,9 @@ const Navbar: React.FC = () => {
             <li>
               <a href="/">Home</a>
             </li>
-            <li style={{cursor: "not-allowed"}}>
+            {/* <li style={{cursor: "not-allowed"}}>
               <a href="/Contact" style={{pointerEvents: "none"}}>Contact</a>
-            </li>
+            </li> */}
             <li style={{cursor: "not-allowed"}}>
               <a href="/projects" style={{pointerEvents: "none"}}>All Projects</a>
             </li>
