@@ -121,39 +121,69 @@ const Home: React.FC = () => {
       <Gallery></Gallery>
 
       <div className="experience">
-        <div className="experience left-side">
-          <ul>
-            <li>
-              <span><strong>Developed</strong> a <strong>marketplace</strong> management website for organizing and tracking merchandise</span>
-            </li>
-            <li id="exp-2">
-              <span>
-                <strong>Delicately</strong> designed. Contributed in planning and testing phases under <span>agile</span> project management
-              </span>
-            </li>
-          </ul>
+        <h1>Experiences</h1>
+        <div className="work-section">
+          <div className="work-section left-side">
+            <ul>
+              <li>
+                <span><strong>Developed</strong> a <strong>marketplace</strong> management website for organizing and tracking merchandise</span>
+              </li>
+              <li id="exp-2">
+                <span>
+                  <strong>Delicately</strong> designed. Contributed in planning and testing phases under <span>agile</span> project management
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="work-section right-side">
+            <div className="logo react">
+              <img src="/images/react.png"></img>
+              <h2>React</h2>
+            </div>
+            <div className="logo sass">
+              <img src="/images/sass.png"></img>
+              <h2>SASS</h2>
+            </div>
+            <div className="logo antd">
+              <img src="/images/antd.png"></img>
+              <h2>AntD</h2>
+            </div>
+            <div className="logo figma">
+              <img src="/images/figma.svg"></img>
+              <h2>Figma</h2>
+            </div>
+            <div className="logo redux">
+              <img src="/images/redux.png"></img>
+              <h2>Redux</h2>
+            </div>
+          </div>
         </div>
 
-        <div className="experience right-side">
-          <div className="logo react">
-            <img src="/images/react.png"></img>
-            <h2>React</h2>
+        <div className="school-section">
+          <div className="card intern">
+            <h2>Internship</h2>
+            <ul>
+              <li>
+                IoT devices monitoring website using <strong>React</strong>
+              </li>
+              <li>
+                NLP machine learning models for <strong>text-to-speech</strong> task using BERT and Transformer
+              </li>
+            </ul>
           </div>
-          <div className="logo sass">
-            <img src="/images/sass.png"></img>
-            <h2>SASS</h2>
+          <div className="card ug-project">
+            <h2>Undergraduate Project</h2>
+            <h3>Image super-resolution</h3>
+            <p>Used <strong>deep learning</strong> to improved the quality upscaled images from neural networks</p>
+            <div className="ug-image">
+              <img src="/images/ug-lr.png" id="lr"></img>
+              <img src="/images/ug-hr.png" id="hr"></img>
+            </div>
           </div>
-          <div className="logo antd">
-            <img src="/images/antd.png"></img>
-            <h2>AntD</h2>
-          </div>
-          <div className="logo figma">
-            <img src="/images/figma.svg"></img>
-            <h2>Figma</h2>
-          </div>
-          <div className="logo redux">
-            <img src="/images/redux.png"></img>
-            <h2>Redux</h2>
+          <div className="card language">
+            <h2>Languages</h2>
+            <span><strong>IELTS 7.0</strong> (CEFR C1) | <strong>JLPT N2</strong> (Pre-advanced)</span>
           </div>
         </div>
       </div>
