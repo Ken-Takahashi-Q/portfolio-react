@@ -7,7 +7,7 @@ import { Collapse } from 'antd';
 import {RightCircleOutlined} from '@ant-design/icons'
 import Gallery from './Pages/Components/Gallery'
 import CardContainer from './Pages/Components/CardContainer';
-import ReactCompareImage from 'react-compare-image';
+// import ReactCompareImage from 'react-compare-image';
 
 const Home: React.FC = () => {
   const { Panel } = Collapse;
@@ -76,7 +76,7 @@ const Home: React.FC = () => {
             <h3>Image super-resolution</h3>
             <p>Used <strong>deep learning</strong> to improved quality of upscaled images up to 8x from neural networks</p>
             <span style={{height: "1em"}}></span>
-            <ReactCompareImage leftImage="/images/ug-lr.png" rightImage="/images/ug-hr.png" />
+            {/* <ReactCompareImage leftImage="/images/ug-lr.png" rightImage="/images/ug-hr.png" /> */}
           </div>
           <div className="card language">
             <h2>Languages</h2>
