@@ -3,7 +3,7 @@ import './gallery.scss'
 import { Carousel } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 
-const Gallery = () => {
+const Gallery: React.FC = () => {
   return (
     <div className="gallery">
       <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>

@@ -1,14 +1,14 @@
 import './Janken.scss';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Janken() {
-  const [showRule, setShowRule] = useState(false);
-  const [score, setScore] = useState(0);
-  const [isHandPick, setIsHandPick] = useState(false);
-  const [playerPick, setPlayerPick] = useState();
-  const [botPick, setBotPick] = useState();
-  const [showResult, setShowResult] = useState(false);
-  const [showWinner, setShowWinner] = useState(false);
+const Janken: React.FC = () => {
+  const [showRule, setShowRule] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [isHandPick, setIsHandPick] = useState<boolean>(false);
+  const [playerPick, setPlayerPick] = useState<string>();
+  const [botPick, setBotPick] = useState<string>();
+  const [showResult, setShowResult] = useState<boolean>(false);
+  const [showWinner, setShowWinner] = useState<string | boolean>(false);
 
   const toggleModalClose = () => {
     if (showRule) {
@@ -35,25 +35,29 @@ function Janken() {
 
   const handlePlayAgain = () => {
     setIsHandPick(false);
-    setPlayerPick();
-    setBotPick();
+    setPlayerPick("");
+    setBotPick("");
     setShowResult(false);
     setShowWinner(false);
   }
 
   useEffect(() => {
-    if (playerPick) {
+    if (playerPick && botPick) {
       const playerHand = playerPick.split(" ")[1];
       const botHand = botPick.split(" ")[1];
 
-      if ((playerHand === "rock" && botHand === "scissors") ||
-      (playerHand === "scissors" && botHand === "paper") ||
-      (playerHand === "paper" && botHand === "rock")) {
+      if (
+        (playerHand === "rock" && botHand === "scissors") ||
+        (playerHand === "scissors" && botHand === "paper") ||
+        (playerHand === "paper" && botHand === "rock")
+      ) {
         setScore(score + 1);
         setShowWinner("YOU WIN")
-      } else if ((playerHand === "scissors" && botHand === "rock") ||
-      (playerHand === "paper" && botHand === "scissors") ||
-      (playerHand === "rock" && botHand === "paper")) {
+      } else if (
+        (playerHand === "scissors" && botHand === "rock") ||
+        (playerHand === "paper" && botHand === "scissors") ||
+        (playerHand === "rock" && botHand === "paper")
+      ) {
         setScore(score - 1);
         setShowWinner("YOU LOSE")
       } else {
@@ -64,10 +68,10 @@ function Janken() {
         setShowResult(true);
       }, 500);
     }
-  }, [botPick])
+  }, [playerPick, botPick])
 
   return (
-    <main className={showRule ? "hidden" : ""}>
+    <div className={`janken showRule ? "hidden" : ""`}>
       <div className={`app-foreground ${showRule ? "hidden" : ""}`}>
         <div className={`white-filter ${showRule ? "show" : ""}`} onClick={toggleModalClose}>
         </div>
@@ -82,7 +86,7 @@ function Janken() {
         <div className="game-section">
           <div className={`hand-choice ${isHandPick ? "hidden" : ""}`}>
             <div className="top-row">
-              <div className={`choice paper ${isHandPick ? playerPick.split(" ")[1]==="paper" ? "p-move" : "hidden" : ""} ${showResult ? "p-shift" : ""}`} onClick={(e) => handPick(e)}>
+              <div className={`choice paper ${isHandPick ? playerPick?.split(" ")[1]==="paper" ? "p-move" : "hidden" : ""} ${showResult ? "p-shift" : ""}`} onClick={(e) => handPick(e)}>
                 <div className="circle-1"></div>
                 <div className="circle-2"></div>
                 <div className="circle-3"></div>
@@ -92,7 +96,7 @@ function Janken() {
                 </div>
               </div>
 
-              <div className={`choice scissors ${isHandPick ? playerPick.split(" ")[1]==="scissors" ? "s-move" : "hidden" : ""} ${showResult ? "s-shift" : ""}`} onClick={(e) => handPick(e)}>
+              <div className={`choice scissors ${isHandPick ? playerPick?.split(" ")[1]==="scissors" ? "s-move" : "hidden" : ""} ${showResult ? "s-shift" : ""}`} onClick={(e) => handPick(e)}>
                 <div className="circle-1"></div>
                 <div className="circle-2"></div>
                 <div className="circle-3"></div>
@@ -104,7 +108,7 @@ function Janken() {
             </div>
 
             <div className="bottom-row">
-              <div className={`choice rock ${isHandPick ? playerPick.split(" ")[1]==="rock" ? "r-move" : "hidden" : ""} ${showResult ? "r-shift" : ""}`} onClick={(e) => handPick(e)}>
+              <div className={`choice rock ${isHandPick ? playerPick?.split(" ")[1]==="rock" ? "r-move" : "hidden" : ""} ${showResult ? "r-shift" : ""}`} onClick={(e) => handPick(e)}>
                 <div className="circle-1"></div>
                 <div className="circle-2"></div>
                 <div className="circle-3"></div>
@@ -180,7 +184,7 @@ function Janken() {
         </div>
         <img src="/images/janken/image-rules.svg" alt="close"/>
       </div>
-    </main>
+    </div>
   );
 }
 

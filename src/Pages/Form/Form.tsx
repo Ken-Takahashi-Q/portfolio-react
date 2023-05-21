@@ -1,15 +1,51 @@
 import './form.scss';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
 
-function Form() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [isError, setIsError] = useState(0);
-  const [formData, setFormData] = useState([
+const Form: React.FC = () => {
+  interface FormData {
+    step: number;
+    name?: string;
+    email?: string;
+    phone?: string;
+    plan?: string;
+    length?: string;
+    add_ons?: boolean[];
+    currentPrice?: number;
+    selectedAddOns?: { [key: string]: { name: string; price: number } };
+    selectedAddOnPrices?: number[];
+    addOnPrices?: number;
+  };
+
+  interface InputField {
+    id: number;
+    type: string;
+    label: string;
+    placeholder: string;
+    value: string;
+    error: string;
+  }
+
+  interface PlanData {
+    id: number;
+    image: string;
+    plan: string;
+    price: number;
+  }
+
+  interface AddOn {
+    id: number;
+    name: string;
+    detail: string;
+    price: number;
+  }
+  
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [formData, setFormData] = useState<FormData[]>([
     {step: 1, name: "", email: "", phone: ""},
     {step: 2, plan: "", length: "monthly"},
     {step: 3, add_ons: [false, false, false]},
-    {step: 4, currentPrice: 0, selectedAddOns: {}, selectedAddOnPrices: {}, addOnPrices: 0}
+    {step: 4, currentPrice: 0, selectedAddOns: {}, selectedAddOnPrices: [], addOnPrices: 0}
   ]);
 
   const stepName = [
@@ -26,19 +62,19 @@ function Form() {
     {step: 4, header: "Finishing up", text: "Double-check everything looks OK before confirming."},
   ]
 
-  const [inputField, setInputField] = useState([
+  const [inputField, setInputField] = useState<InputField[]>([
     {id: 1, type: "name", label: "Name", placeholder: "e.g. Stephen King", value: "", error: ""},
     {id: 2, type: "email", label: "Email Address", placeholder: "e.g. stephenking@lorem.com", value: "", error: ""},
     {id: 3, type: "phone", label: "Phone Number", placeholder: "e.g. +1 234 567 890", value: "", error: ""},
   ]);
 
-  const planData = [
+  const planData: PlanData[] = [
     {id: 1, image: "/images/multi-step-form/icon-arcade.svg", plan: "Arcade", price: 9},
     {id: 2, image: "/images/multi-step-form/icon-advanced.svg", plan: "Advanced", price: 12},
     {id: 3, image: "/images/multi-step-form/icon-pro.svg", plan: "Pro", price: 15},
   ]
 
-  const addOns = [
+  const addOns: AddOn[] = [
     {id: 1, name: "Online service", detail: "Access to multiplayer games", price: 1},
     {id: 2, name: "Larger storage", detail: "Extra 1TB of cloud save", price: 2},
     {id: 3, name: "Customizable profile", detail: "Custom theme on your profile", price: 2},
@@ -46,24 +82,46 @@ function Form() {
 
   useEffect(() => {
     if (currentStep === 3) {
-      const selectedAddOns = addOns.filter((addOn, index) => formData[2].add_ons[index]).map((addOn) => {
-        return { name: addOn.name, price: addOn.price };
-      });
+      const selectedAddOns = addOns
+        .filter((addOn, index) => formData[2]?.add_ons?.[index])
+        .map((addOn) => {
+          return { name: addOn.name, price: addOn.price };
+        });
+
+        console.log(selectedAddOns)
     
-      const currentPrice = planData.find((plan) => plan.plan === formData[1].plan).price;
-      const selectedAddOnPrices = addOns.filter((addOn, index) => formData[2].add_ons[index]).map((addOn) => addOn.price);
+      const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
+      const selectedAddOnPrices = addOns
+        .filter((addOn, index) => formData[2]?.add_ons?.[index])
+        .map((addOn) => addOn.price);
       const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
   
-      setFormData(prevFormData => [
-        ...prevFormData.slice(0, 3),
-        {
-          ...prevFormData[3],
-          currentPrice,
+      setFormData((prevFormData) => {
+        const updatedFormData = [...prevFormData];
+        const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
+        const selectedAddOns: { [key: string]: { name: string; price: number } } = addOns
+          .filter((addOn, index) => formData[2]?.add_ons?.[index])
+          .reduce((obj, addOn) => {
+            obj[addOn.id.toString()] = { name: addOn.name, price: addOn.price };
+            return obj;
+          }, {});
+      
+        const selectedAddOnPrices = addOns
+          .filter((addOn, index) => formData[2]?.add_ons?.[index])
+          .map((addOn) => addOn.price);
+        const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
+      
+        updatedFormData[3] = {
+          ...updatedFormData[3],
+          currentPrice: currentPrice ?? 0,
           selectedAddOns,
           selectedAddOnPrices,
-          addOnPrices: addOnPrices,
-        }
-      ]);
+          addOnPrices,
+        };
+      
+        return updatedFormData;
+      });
+      
     }
   }, [formData[2].add_ons, currentStep]);
 
@@ -102,15 +160,15 @@ function Form() {
     });
   };
 
-  const handleAddOnsChange = (id) => {
+  const handleAddOnsChange = (id: number): void => {
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
       updatedFormData[2] = { ...prevState[2] }; // deep copy of the third object
-      updatedFormData[2].add_ons = [...prevState[2].add_ons]; // copy of the add_ons array
-      updatedFormData[2].add_ons[id-1] = !updatedFormData[2].add_ons[id-1];
+      updatedFormData[2].add_ons = [...(prevState[2].add_ons || [])] as boolean[]; // copy of the add_ons array
+      updatedFormData[2].add_ons[id - 1] = !updatedFormData[2].add_ons[id - 1];
       return updatedFormData;
     });
-  };
+  };  
 
   const handleGoBack = () => {
     setCurrentStep(currentStep - 1);
@@ -264,7 +322,7 @@ function Form() {
                 <div className="form-field data-step-3">
                   {addOns.map((data) => (
                     <div
-                      className={`card ${formData[2].add_ons[data.id-1] ? "selected" : ""}`}
+                      className={`card ${formData[2].add_ons?.[data.id-1] ? "selected" : ""}`}
                       key={data.id}
                       onClick={() => handleAddOnsChange(data.id)}
                     >
@@ -295,20 +353,20 @@ function Form() {
                   <div className="order">
                     <div className="bill-detail">
                       <div className="bill-left">
-                        <h4><span>{`${formData[1].plan} (${formData[1].length.charAt(0).toUpperCase() + formData[1].length.slice(1)})`}</span></h4>
+                        <h4><span>{`${formData[1].plan} (${(formData[1].length?.charAt(0).toUpperCase() ?? "") + formData[1]?.length?.slice(1)})`}</span></h4>
                         <p className="change-length" onClick={handleChangeLength}>Change</p>
                       </div>
                       <div className="bill-price">
                         {formData[1].length === "monthly" ?
                           <h3>${formData[3].currentPrice}/mo</h3> :
-                          <h3>${formData[3].currentPrice * 10}/yr</h3>
+                          <h3>${(formData[3].currentPrice ?? 0) * 10}/yr</h3>
                         }
                       </div>
                     </div>
                     <span className="line"></span>
 
-                    {formData[3].selectedAddOns.map((value) => (
-                      <div className="bill-detail">
+                    {Object.entries(formData?.[3]?.selectedAddOns ?? {}).map(([key, value]) => (
+                      <div className="bill-detail" key={key}>
                         <div className="bill-left">
                           <p>{value.name}</p>
                         </div>
@@ -324,10 +382,10 @@ function Form() {
                   </div>
                         
                   <div className="bill-total">
-                    <p>Total (per {formData[1].length.replace(/ly$/, "")})</p>
+                    <p>Total (per {formData[1]?.length?.replace(/ly$/, "")})</p>
                     {formData[1].length === "monthly" ?
-                      <h2>+${formData[3].currentPrice + formData[3].addOnPrices}/mo</h2> :
-                      <h2>+${(formData[3].currentPrice + formData[3].addOnPrices) * 10}/yr</h2>
+                      <h2>+${(formData[3]?.currentPrice ?? 0) + (formData[3]?.addOnPrices ?? 0)}/mo</h2> :
+                      <h2>+${((formData[3]?.currentPrice ?? 0) + (formData[3]?.addOnPrices ?? 0)) * 10}/yr</h2>
                     }
                   </div>
                 </div> :

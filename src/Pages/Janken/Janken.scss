@@ -14,7 +14,7 @@
   --headerOutline: hsl(217, 16%, 45%);
 }
 
-main {
+.janken {
   display: flex;  
   flex-direction: column;
   align-items: center;
@@ -58,10 +58,6 @@ main {
         background-color: rgb(255, 255, 255, 0.3);
         z-index: 20;
       }
-    }
-
-    h1 {
-      font-size: 3em;
     }
   
     .game-header {
@@ -474,6 +470,10 @@ main {
       align-items: center;
       color: var(--darkText);
 
+      h1 {
+        font-size: 3em;
+      }
+
       .close-button {
         display: flex;
         justify-content: center;
@@ -509,7 +509,7 @@ main {
 
 // 2K screen
 @media only screen and (max-width: 600px) {
-  main {
+  .janken {
     .modal-rules {
       justify-content: center;
       top: 0;
@@ -670,7 +670,7 @@ main {
 }
 
 @media only screen and (max-width: 400px) {
-  main {
+  .janken {
     .app-foreground {
       .game-section {
         .hand-choice {
