@@ -2,12 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import './Home.scss'
 import Navbar from './Pages/Components/Navbar'
-import { Grid, Row, Col } from 'antd'
-import { Collapse } from 'antd';
-import {RightCircleOutlined} from '@ant-design/icons'
+import { Grid, Row, Col, Collapse } from 'antd'
+import {DownCircleOutlined} from '@ant-design/icons'
 import Gallery from './Pages/Components/Gallery'
 import CardContainer from './Pages/Components/CardContainer';
-// import ReactCompareImage from 'react-compare-image';
+import { ImgComparisonSlider } from '@img-comparison-slider/react';
 
 const Home: React.FC = () => {
   const { Panel } = Collapse;
@@ -77,11 +76,21 @@ const Home: React.FC = () => {
             <p>Used <strong>deep learning</strong> to improved quality of upscaled images up to 8x from neural networks</p>
             <span style={{height: "1em"}}></span>
             {/* <ReactCompareImage leftImage="/images/ug-lr.png" rightImage="/images/ug-hr.png" /> */}
+            <ImgComparisonSlider style={{width: "15em"}}>
+              <img slot="first" src="/images/ug-lr.png" style={{height: "15em"}}/>
+              <img slot="second" src="/images/ug-hr.png"style={{height: "15em"}}/>
+            </ImgComparisonSlider>
           </div>
           <div className="card language">
             <h2>Languages</h2>
             <span><strong>IELTS 7.0</strong> (CEFR C1)</span>
             <span><strong>JLPT N2</strong> (Pre-advanced)</span>
+          </div>
+          <div className="card certificate">
+            <span><span className="warning">Under reconstruction</span> <a href="https://elegant-dragon-097141.netlify.app/#project">visit old version HTML</a></span>
+            <div className="certificate arrow">
+              <DownCircleOutlined style={{fontSize: "3em"}}/>
+            </div>
           </div>
         </div>
       </div>
