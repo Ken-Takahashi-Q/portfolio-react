@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react'; 
 import './card-container.scss'
-import { RightCircleOutlined } from '@ant-design/icons';
+import { UpCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 
 const CardContainer: React.FC = () => {
   const [showContact, setShowContact] = useState(false);
@@ -100,7 +100,7 @@ const CardContainer: React.FC = () => {
 
       </div>
       <div className="find-out-more">
-        <RightCircleOutlined rotate={270} style={{fontSize: "3em"}}
+        <UpCircleOutlined style={{fontSize: "3em"}}
           onClick={showCard} className="arrow"
         />
       </div>

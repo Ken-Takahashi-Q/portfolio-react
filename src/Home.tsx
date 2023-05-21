@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './Home.scss'
 import Navbar from './Pages/Components/Navbar'
 import { Grid, Row, Col, Collapse } from 'antd'
-import {DownCircleOutlined} from '@ant-design/icons'
+import { DownCircleOutlined, ToolOutlined } from '@ant-design/icons'
 import Gallery from './Pages/Components/Gallery'
 import CardContainer from './Pages/Components/CardContainer';
 import { ImgComparisonSlider } from '@img-comparison-slider/react';
@@ -87,9 +87,9 @@ const Home: React.FC = () => {
             <span><strong>JLPT N2</strong> (Pre-advanced)</span>
           </div>
           <div className="card certificate">
-            <span><span className="warning">Under reconstruction</span> <a href="https://elegant-dragon-097141.netlify.app/#project">visit old version HTML</a></span>
+            <span><span className="warning">Under reconstruction</span><a href="https://elegant-dragon-097141.netlify.app">visit old version HTML</a></span>
             <div className="certificate arrow">
-              <DownCircleOutlined style={{fontSize: "3em"}}/>
+            <ToolOutlined style={{fontSize: "3em"}}/>
             </div>
           </div>
         </div>
