@@ -59,25 +59,31 @@
 
     &.gallery-5 {
       grid-area: 2/2/3/3;
-      background-image: url("/images/janken.jpeg");
+      background-image: url("/images/notification.jpeg");
       @include gallery-styles;
     } 
 
     &.gallery-6 {
       grid-area: 2/3/3/4;
-      background-image: url("/images/weather-api.jpeg");
+      background-image: url("/images/janken.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-7 {
       grid-area: 3/1/4/2;
-      background-image: url("/images/multi-step-form.jpeg");
+      background-image: url("/images/weather-api.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-8 {
       grid-area: 3/2/4/3;
       background-image: url("/images/parallax.jpeg");
+      @include gallery-styles;
+    }
+
+    &.gallery-9 {
+      grid-area: 3/2/4/3;
+      background-image: url("/images/expense-chart.jpeg");
       @include gallery-styles;
     }
 
@@ -97,9 +103,9 @@
   }
 
   .gallery-text {
-    grid-area: 1/4/3/6;
+    grid-area: 1/4/4/6;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: relative;
     flex-direction: column;
     padding: 2em;
@@ -158,7 +164,7 @@
 
 @media only screen and (max-width: 540px) {
   .gallery {
-    grid-template-rows: 3fr 2fr 2fr;
+    grid-template-rows: none;
     grid-template-columns: repeat(2, 1fr);
     padding: 0;
     width: 100%;
@@ -167,6 +173,7 @@
     .card {
       padding: 0.5em;
       width: 200px;
+      height: 160px;
       border-radius: 0.5em;
 
       &.gallery-1 {
@@ -174,11 +181,11 @@
       }
   
       &.gallery-2 {
-        grid-area: 2/2/3/3;
+        grid-area: 3/1/4/2;
       }
   
       &.gallery-3 {
-        grid-area: 3/1/4/2;
+        grid-area: 2/2/3/3;
       }
   
       &.gallery-4 {
@@ -186,14 +193,22 @@
       }
   
       &.gallery-5 {
-        grid-area: 4/1/5/2;
+        grid-area: 2/3/3/4;
       } 
   
       &.gallery-6 {
-        grid-area: 4/2/5/3;
+        grid-area: 3/3/3/4;
       }
 
-      &.gallery-7, &.gallery-8 {
+      &.gallery-7 {
+        display: none;
+      }
+
+      &.gallery-8 {
+        display: none;
+      }
+
+      &.gallery-9 {
         display: none;
       }
 
