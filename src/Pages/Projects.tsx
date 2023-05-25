@@ -54,26 +54,33 @@ const Projects: React.FC = () => {
     <div className="all-projects">
       <Navbar/>
       <div className="projects-section">
-        <h1>All Projects</h1>
-        {projectCardList.map((value, index) => {
-          return (
-            <a
-              className={`project-gallery ${visibleCards.includes(index) ? "isVisible" : ""}`}
-              href={value?.goto}
-              target={'_blank'}
-              key={index}
-            >
-              <div className="project-card">
-                <div className="project-card-image" style={{backgroundImage: `url(${value?.img})`}}>
-                </div>
-                <div className="detail">
-                  <h2>{value?.header}</h2>
-                  <p>{value?.detail}</p>
-                </div>
+        <div className="projects-section-header">
+          <h1>All Projects</h1>
+        </div>
+
+        <div className="projects-section-cards">
+          {projectCardList.map((value, index) => {
+            return (
+              <div className="card-row">
+                <a
+                  className={`project-gallery ${visibleCards.includes(index) ? "isVisible" : ""}`}
+                  href={value?.goto}
+                  target={'_blank'}
+                  key={index}
+                >
+                  <div className="project-card">
+                    <div className="project-card-image" style={{backgroundImage: `url(${value?.img})`}}>
+                    </div>
+                    <div className="detail">
+                      <h2>{value?.header}</h2>
+                      <p>{value?.detail}</p>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
     </div>
   )
