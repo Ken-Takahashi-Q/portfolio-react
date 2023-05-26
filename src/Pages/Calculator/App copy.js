@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App copy.css';
+
 function App() {
 	const [calc, setCalc] = useState("");
 	const [result, setResult] = useState("");

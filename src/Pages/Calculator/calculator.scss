@@ -106,13 +106,14 @@
     overflow: hidden;
 
     .display {
-      background-color: var(--display-color);
+      width: 100%;
       padding: 1em;
+      background-color: var(--display-color);
       border-radius: 1em 1em 0 0;
-      text-align: flex-end;
-      overflow: hidden;
+      text-align: end;
       white-space: nowrap;
       text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .numpad {
@@ -130,7 +131,7 @@
       padding: 0.5em;
 
       .cell_11 { grid-area: 1 / 1 / 2 / 3; }
-      .cell_13 { grid-area: 1 / 3 / 2 / 4; }
+      .cell_13 { grid-area: 1 / 3 / 2 / 4; aspect-ratio: 1;}
       .cell_14 { grid-area: 1 / 4 / 2 / 5; }
       
       .cell_21 { grid-area: 2 / 1 / 3 / 2; }
@@ -153,15 +154,26 @@
       .cell_54 { grid-area: 5 / 4 / 6 / 5; }
 
       button {
+        padding: 0.5em;
         width: 100%;
         height: 100%;
+        font-family: inherit;
+        background-color: #1a1a1a;
+        border: 1px solid transparent;
         border-radius: 5em;
-        border: none;
+        font-size: 1em;
+        font-weight: 500;
         cursor: pointer;
+        transition: border-color 0.25s;
 
         &:active {
           background-color: var(--btn-click);
           transform: translateY(2px);
+        }
+
+        &:focus,
+        &:focus-visible {
+          outline: 4px auto -webkit-focus-ring-color;
         }
       }
 

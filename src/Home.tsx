@@ -19,7 +19,7 @@ const Home: React.FC = () => {
       <Gallery></Gallery>
 
       <div className="experience-section">
-        <h1>Experiences</h1>
+        <h1 style={{borderBottom: "4px solid white"}}>Experiences</h1>
         <div className="work-section">
           <div className="work-section left-side">
             <ul>
