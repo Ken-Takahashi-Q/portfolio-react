@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+[data-theme="light"] {
+  --card-bg: hsl(0, 0%, 98%);
+  --line: hsl(236, 33%, 92%);
+  --app-bg: hsl(233, 11%, 84%);
+  --not-hold: hsl(236, 9%, 61%);
+  --cursor-hold: hsl(235, 19%, 35%);
+  --text: hsl(235, 19%, 35%);
+  --complete: hsl(233, 11%, 84%);
+  --circle-color: hsl(233, 11%, 84%);
+}
+
+[data-theme="dark"] {
+  --card-bg: hsl(235, 24%, 19%);
+  --line: hsl(233, 14%, 35%);;
+  --app-bg: hsl(235, 21%, 11%);
+  --not-hold: hsl(236, 9%, 61%);
+  --cursor-hold: hsl(236, 33%, 92%);
+  --text: hsl(234, 39%, 85%);
+  --complete: hsl(234, 11%, 52%);
+  --circle-color: hsl(237, 14%, 26%);
+}
+
+.todo-page {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--app-bg);
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: 1rem;
+    color: white;
+  }
+
+  .header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+
+    & > * {
+      background-position: center;
+      background-repeat: no-repeat;
+      object-fit: contain;
+    }
+
+    &.dark {
+      background-image: url("/images/todo/bg-desktop-dark.jpg");
+    }
+
+    &.light {
+      background-image: url("/images/todo/bg-desktop-light.jpg");
+    }
+
+  }
+
+  .todo-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 500px;
+    padding-top: 5rem;
+    gap: 1rem;
+    transition: 0.5s ease-in-out;
+    z-index: 10;
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .create-new {
+      border-radius: 0.2rem;
+
+      input {
+        padding: 0 1.8rem 0 2.1rem;
+        width: 100%;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-family: 'Josefin Sans';
+        font-size: 1em;
+
+        &:focus {
+          outline: none;
+          background: transparent;
+        }
+      }
+    }
+
+    .create-new, .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0.8rem 1rem 0.8rem;
+      color: var(--text);
+      background-color: var(--card-bg);
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+
+      p {
+        cursor: pointer;
+      }
+
+      .delete-task img {
+        width: 0.8rem;
+        height: 0.8rem;
+        cursor: pointer;
+      }
+    }
+
+    .todo-list {
+      border-radius: 0.2rem;
+      overflow: hidden;
+
+      .task {
+        border-bottom: 1px solid var(--line);
+
+        .task-left {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .check-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid var(--circle-color);
+            border-radius: 50%;
+
+            img {
+              width: 0.6rem;
+              height: 0.6rem;
+            }
+
+            &:hover {
+              border-color: var(--check-bg);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0.8rem 1rem 0.8rem;
+        background-color: var(--card-bg);
+        // color: var(--complete);
+        color: var(--not-hold);
+
+        p {
+          font-size: 0.9rem;
+        }
+
+        &.mobile {
+          display: none;
+        }
+
+        .menus {
+          display: flex;
+          gap: 1rem;
+
+          &.primary {
+            color: var(--bright-blue) !important;
+
+            &:active {
+              font-weight: 700;
+            }
+          }
+
+          .menus-text:hover {
+            color: var(--text);
+            cursor: pointer;
+          }
+        }
+
+        .clear-completed:hover {
+          color: var(--text);
+          cursor: pointer;
+        }
+      }
+
+      .completed {
+        color: var(--complete);
+        text-decoration: line-through;
+      }
+    }
+
+    .advice {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1rem 0;
+      color: var(--not-hold);
+      font-size: 1rem;
+    }
+  }
+}
+
+
+/* header {
+  width: 100%;
+  height: 300px;
+  background-image: url("src/images/bg-desktop-dark.jpg");
+  background-repeat: no-repeat;
+  object-fit: cover;
+} */
+
+@media screen and (max-width: 600px) {
+  .todo-app {
+    width: 90%;
+    padding-top: 3rem;
+  }
+
+  .details {
+    margin-bottom: 1rem;
+    border-radius: 0 0 0.2rem 0.2rem;
+  }
+  .menus {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0.2rem;
+  }
+  
+}

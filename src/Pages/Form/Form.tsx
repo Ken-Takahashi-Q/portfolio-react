@@ -1,5 +1,5 @@
 import './form.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Input } from 'antd';
 
 const Form: React.FC = () => {
@@ -80,52 +80,7 @@ const Form: React.FC = () => {
     {id: 3, name: "Customizable profile", detail: "Custom theme on your profile", price: 2},
   ]
 
-  useEffect(() => {
-    if (currentStep === 3) {
-      const selectedAddOns = addOns
-        .filter((addOn, index) => formData[2]?.add_ons?.[index])
-        .map((addOn) => {
-          return { name: addOn.name, price: addOn.price };
-        });
-
-        console.log(selectedAddOns)
-    
-      const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
-      const selectedAddOnPrices = addOns
-        .filter((addOn, index) => formData[2]?.add_ons?.[index])
-        .map((addOn) => addOn.price);
-      const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
-  
-      setFormData((prevFormData) => {
-        const updatedFormData = [...prevFormData];
-        const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
-        const selectedAddOns: { [key: string]: { name: string; price: number } } = addOns
-          .filter((addOn, index) => formData[2]?.add_ons?.[index])
-          .reduce((obj, addOn) => {
-            obj[addOn.id.toString()] = { name: addOn.name, price: addOn.price };
-            return obj;
-          }, {});
-      
-        const selectedAddOnPrices = addOns
-          .filter((addOn, index) => formData[2]?.add_ons?.[index])
-          .map((addOn) => addOn.price);
-        const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
-      
-        updatedFormData[3] = {
-          ...updatedFormData[3],
-          currentPrice: currentPrice ?? 0,
-          selectedAddOns,
-          selectedAddOnPrices,
-          addOnPrices,
-        };
-      
-        return updatedFormData;
-      });
-      
-    }
-  }, [formData[2].add_ons, currentStep]);
-
-  const handleInputChange = (type, value) => {
+  const handleInputChange = (type: string, value: string) => {
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
       updatedFormData[currentStep - 1][type] = value;
@@ -143,7 +98,7 @@ const Form: React.FC = () => {
     });
   };
   
-  const handlePlanChange = (plan) => {
+  const handlePlanChange = (plan: string) => {
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
       updatedFormData[1].plan = plan;
@@ -214,9 +169,49 @@ const Form: React.FC = () => {
     if (!isError) {
       setCurrentStep(currentStep + 1);
     }
+    
+    if (currentStep === 3) {
+      const selectedAddOns = addOns
+        .filter((addOn, index) => formData[2]?.add_ons?.[index])
+        .map((addOn) => {
+          return { name: addOn.name, price: addOn.price };
+        });
+    
+      const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
+      const selectedAddOnPrices = addOns
+        .filter((addOn, index) => formData[2]?.add_ons?.[index])
+        .map((addOn) => addOn.price);
+      const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
+  
+      setFormData((prevFormData) => {
+        const updatedFormData = [...prevFormData];
+        const currentPrice = planData.find((plan) => plan.plan === formData[1]?.plan)?.price;
+        const selectedAddOns: { [key: string]: { name: string; price: number } } = addOns
+          .filter((addOn, index) => formData[2]?.add_ons?.[index])
+          .reduce((obj, addOn) => {
+            obj[addOn.id.toString()] = { name: addOn.name, price: addOn.price };
+            return obj;
+          }, {});
+      
+        const selectedAddOnPrices = addOns
+          .filter((addOn, index) => formData[2]?.add_ons?.[index])
+          .map((addOn) => addOn.price);
+        const addOnPrices = selectedAddOnPrices.reduce((total, price) => total + price, 0);
+      
+        updatedFormData[3] = {
+          ...updatedFormData[3],
+          currentPrice: currentPrice ?? 0,
+          selectedAddOns,
+          selectedAddOnPrices,
+          addOnPrices,
+        };
+      
+        return updatedFormData;
+      });
+    }
   }
 
-  const handleJumpTo = (target) => {
+  const handleJumpTo = (target: number) => {
     if (target < currentStep) {
       setCurrentStep(target);
     }

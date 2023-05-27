@@ -268,6 +268,9 @@
           &.hidden {
             visibility: hidden;
           }
+          &:hover {
+            text-decoration: underline;
+          }
         }
   
         a {
@@ -280,9 +283,14 @@
         }
   
         button {
+          padding: 1em;
           width: auto;
           background-color: var(--marine-blue);
           color: white;
+          border-radius: 0.5em;
+          font-size: 1em;
+          cursor: pointer;
+
           &:hover {
             background-color: hsla(213, 96%, 18%, 0.8);
           }

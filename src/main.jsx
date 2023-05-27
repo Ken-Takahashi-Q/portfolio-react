@@ -9,6 +9,7 @@ import Janken from './Pages/Janken/Janken';
 import Form from './Pages/Form/Form';
 import IPTracker from './Pages/IP-Tracker/ip-tracker';
 import Calculator from './Pages/Calculator/Calculator';
+import Todo from './Pages/Todo/todo';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/multi-step-form" element={<Form />} />
         <Route path="/ip-tracker" element={<IPTracker />} />
         <Route path="/calculator" element={<Calculator />} />
+        <Route path="/todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
