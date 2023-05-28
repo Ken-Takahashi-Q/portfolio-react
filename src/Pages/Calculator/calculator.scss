@@ -99,7 +99,7 @@
   }
 
   .calculator {
-    width: 480px;
+    width: 400px;
     height: fit-content;
     background-color: var(--cal-color);
     border-radius: 1em;
@@ -110,6 +110,7 @@
       padding: 1em;
       background-color: var(--display-color);
       border-radius: 1em 1em 0 0;
+      color: var(--text-color);
       text-align: end;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -164,16 +165,17 @@
         font-size: 1em;
         font-weight: 500;
         cursor: pointer;
-        transition: border-color 0.25s;
+        transition: 0.5s;
 
         &:active {
           background-color: var(--btn-click);
           transform: translateY(2px);
         }
 
-        &:focus,
+        &:hover, &:focus,
         &:focus-visible {
           outline: 4px auto -webkit-focus-ring-color;
+          transition: 0.5s;
         }
       }
 
