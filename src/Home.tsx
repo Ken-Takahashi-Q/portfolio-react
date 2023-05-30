@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react'
 import './Home.scss'
 import Navbar from './Pages/Components/Navbar'
 import { Grid, Row, Col, Collapse } from 'antd'
-import { DownCircleOutlined, ToolOutlined } from '@ant-design/icons'
-import Gallery from './Pages/Components/Gallery'
+import { ToolOutlined } from '@ant-design/icons'
 import CardContainer from './Pages/Components/CardContainer';
+import Gallery from './Pages/Components/Gallery'
 import { ImgComparisonSlider } from '@img-comparison-slider/react';
 
 const Home: React.FC = () => {
   const { Panel } = Collapse;
 
   return (
-    <div className="App">
+    <div className="homepage">
       <Navbar/>
 
       <CardContainer />
@@ -36,23 +36,23 @@ const Home: React.FC = () => {
 
           <div className="work-section right-side">
             <div className="logo react">
-              <img src="/images/react.png"></img>
+              <img src="/images/home/react.png"></img>
               <h2>React</h2>
             </div>
             <div className="logo sass">
-              <img src="/images/sass.png"></img>
+              <img src="/images/home/sass.png"></img>
               <h2>SASS</h2>
             </div>
             <div className="logo antd">
-              <img src="/images/antd.png"></img>
+              <img src="/images/home/antd.png"></img>
               <h2>AntD</h2>
             </div>
             <div className="logo figma">
-              <img src="/images/figma.svg"></img>
+              <img src="/images/home/figma.svg"></img>
               <h2>Figma</h2>
             </div>
             <div className="logo redux">
-              <img src="/images/redux.png"></img>
+              <img src="/images/home/redux.png"></img>
               <h2>Redux</h2>
             </div>
           </div>
@@ -75,16 +75,21 @@ const Home: React.FC = () => {
             <h3>Image super-resolution</h3>
             <p>Used <strong>deep learning</strong> to improved quality of upscaled images up to 8x from neural networks</p>
             <span style={{height: "1em"}}></span>
-            {/* <ReactCompareImage leftImage="/images/ug-lr.png" rightImage="/images/ug-hr.png" /> */}
+            {/* <ReactCompareImage leftImage="/images/home/ug-lr.png" rightImage="/images/home/ug-hr.png" /> */}
             <ImgComparisonSlider style={{width: "15em"}}>
-              <img slot="first" src="/images/ug-lr.png" style={{height: "15em"}}/>
-              <img slot="second" src="/images/ug-hr.png"style={{height: "15em"}}/>
+              <img slot="first" src="/images/home/ug-lr.png" style={{height: "15em"}}/>
+              <img slot="second" src="/images/home/ug-hr.png"style={{height: "15em"}}/>
             </ImgComparisonSlider>
           </div>
           <div className="card language">
-            <h2>Languages</h2>
-            <span><strong>IELTS 7.0</strong> (CEFR C1)</span>
-            <span><strong>JLPT N2</strong> (Pre-advanced)</span>
+            <div className="lang-test">
+              <h2>Languages</h2>
+              <span className="lang-test-line-1"><strong>IELTS 7.0</strong> (CEFR C1)</span>
+              <span className="lang-test-line-2"><strong>JLPT N2</strong> (Pre-advanced)</span>
+            </div>
+            {/* <div className="lang-letter">
+              A
+            </div> */}
           </div>
           <div className="card certificate">
             <span><span className="warning">Under reconstruction :(</span><a href="https://elegant-dragon-097141.netlify.app">visit old version HTML</a></span>

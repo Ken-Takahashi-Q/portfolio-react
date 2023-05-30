@@ -35,55 +35,55 @@
 
     &.gallery-1 {
       grid-area: 1/1/2/2;
-      background-image: url("/images/tips-calculator.jpeg");
+      background-image: url("/images/home/tips-calculator.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-2 {
       grid-area: 1/2/2/3;
-      background-image: url("/images/todo-list.png");
+      background-image: url("/images/home/todo-list.png");
       @include gallery-styles;
     }
 
     &.gallery-3 {
       grid-area: 1/3/2/4;
-      background-image: url("/images/mancala.jpeg");
+      background-image: url("/images/home/mancala.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-4 {
       grid-area: 2/1/3/2;
-      background-image: url("/images/multi-step-form.jpeg");
+      background-image: url("/images/home/multi-step-form.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-5 {
       grid-area: 2/2/3/3;
-      background-image: url("/images/notification.jpeg");
+      background-image: url("/images/home/notification.jpeg");
       @include gallery-styles;
     } 
 
     &.gallery-6 {
       grid-area: 2/3/3/4;
-      background-image: url("/images/janken.jpeg");
+      background-image: url("/images/home/janken.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-7 {
       grid-area: 3/1/4/2;
-      background-image: url("/images/weather-api.jpeg");
+      background-image: url("/images/home/weather-api.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-8 {
       grid-area: 3/2/4/3;
-      background-image: url("/images/parallax.jpeg");
+      background-image: url("/images/home/parallax.jpeg");
       @include gallery-styles;
     }
 
     &.gallery-9 {
       grid-area: 3/2/4/3;
-      background-image: url("/images/expense-chart.jpeg");
+      background-image: url("/images/home/expense-chart.jpeg");
       @include gallery-styles;
     }
 

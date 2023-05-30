@@ -52,7 +52,8 @@ const CardContainer: React.FC = () => {
 
     <div className="card-round card-3">
       <h1>Looking for</h1>
-      <h3>Frontend Developer</h3>
+      <h3 className="looking-for-line-1">Frontend Developer</h3>
+      <h3 className="looking-for-line-2">Fullstack Developer</h3>
     </div>
 
     <div className="card-round card-4">
@@ -86,11 +87,11 @@ const CardContainer: React.FC = () => {
     <div className={`card-round card-7 ${showContact ? 'show' : 'hide'}`}>
       <div className="contact-container">
         <a className="linkedin" href="https://www.linkedin.com/in/k-tkhashi/" target="_blank">
-          <img src="/images/logo-linkedin.png"></img>
+          <img src="/images/home/logo-linkedin.png"></img>
           <h3>LinkedIn</h3>
         </a>
         <a className="github" href="https://github.com/Ken-Takahashi-Q" target="_blank">
-          <img src="/images/logo-github.png"></img>
+          <img src="/images/home/logo-github.png"></img>
           <h3>Github</h3>
         </a>
 
