@@ -84,7 +84,7 @@ const CardContainer: React.FC = () => {
       </div>
     </div>
 
-    <div className={`card-round card-7 ${showContact ? 'show' : 'hide'}`}>
+    <div className={`card-round card-7 ${showContact ? "show" : "hide"}`}>
       <div className="contact-container">
         <a className="linkedin" href="https://www.linkedin.com/in/k-tkhashi/" target="_blank">
           <img src="/images/home/logo-linkedin.png"></img>
