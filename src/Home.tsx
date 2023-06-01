@@ -10,6 +10,12 @@ import { ImgComparisonSlider } from '@img-comparison-slider/react';
 
 const Home: React.FC = () => {
   const { Panel } = Collapse;
+  const languageChars = ["ก", "A", "あ"];
+  const [langChar, setLangChar] = useState<Number>(0);
+
+  const handleRandomLang = () => {
+    setLangChar(Math.floor(Math.random()*3));
+  }
 
   return (
     <div className="homepage">
@@ -87,9 +93,12 @@ const Home: React.FC = () => {
               <span className="lang-test-line-1"><strong>IELTS 7.0</strong> (CEFR C1)</span>
               <span className="lang-test-line-2"><strong>JLPT N2</strong> (Pre-advanced)</span>
             </div>
-            {/* <div className="lang-letter">
-              A
-            </div> */}
+            <div className="lang-letter" onMouseEnter={handleRandomLang}>
+              <span>{languageChars[langChar]}</span>
+              {/* <span className="lang-letter-1">ก</span>
+              <span className="lang-letter-2">A</span>
+              <span className="lang-letter-3">あ</span> */}
+            </div>
           </div>
           <div className="card certificate">
             <span><span className="warning">Under reconstruction :(</span><a href="https://elegant-dragon-097141.netlify.app">visit old version HTML</a></span>
