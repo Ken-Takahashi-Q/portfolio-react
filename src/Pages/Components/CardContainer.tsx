@@ -71,7 +71,7 @@ const CardContainer: React.FC = () => {
         <li>HTML/CSS/<br></br>SCSS</li>
         <li>JavaScript/<br></br>TypeScript</li>
         <li>React/Next/<br></br>Tailwind</li>
-        <li>Python</li>
+        <li>Python/<br></br>Node.js</li>
       </ul>
     </div>
 

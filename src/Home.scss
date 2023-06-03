@@ -85,7 +85,15 @@
     gap: 1em;
 
     .left-side {
+      flex-direction: column;
       padding: 0;
+
+      .work-position {
+        width: 100%;
+        text-align: start;
+        color:rgb(196, 196, 196)
+      }
+
       ul {
         font-size: 20px;
         list-style: none;
@@ -162,6 +170,10 @@
     gap: 1em;
     width: 800px;
     border-radius: 1em;
+
+    .card {
+      border-radius: 1.6em;
+    }
 
     .intern {
       grid-area: 1/1/2/2;
@@ -269,7 +281,7 @@
         right: 2rem;
         font-size: 4em;
         font-weight: 600;
-        transition: 0.5s;
+        transition: all 0.5s;
 
         .lang-letter-1 {
           opacity: 0;
@@ -371,6 +383,10 @@
 
     .left-side {
       padding: 0;
+
+      .work-position h2 {
+        font-size: 1.2em;
+      }
 
       #exp-2 {
         padding: 0;

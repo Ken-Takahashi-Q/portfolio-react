@@ -11,7 +11,7 @@ import { ImgComparisonSlider } from '@img-comparison-slider/react';
 const Home: React.FC = () => {
   const { Panel } = Collapse;
   const languageChars = ["ก", "A", "あ"];
-  const [langChar, setLangChar] = useState<Number>(0);
+  const [langChar, setLangChar] = useState<number>(0);
 
   const handleRandomLang = () => {
     setLangChar(Math.floor(Math.random()*3));
@@ -28,6 +28,7 @@ const Home: React.FC = () => {
         <h1 style={{borderBottom: "4px solid white"}}>Experiences</h1>
         <div className="work-section">
           <div className="work-section left-side">
+            <span className="work-position"><h2>Software Engineer (Frontend)</h2> N-squared eCommerce</span>
             <ul>
               <li>
                 <span><strong>Developed</strong> a <strong>marketplace</strong> management website for organizing and tracking merchandise</span>
@@ -87,13 +88,13 @@ const Home: React.FC = () => {
               <img slot="second" src="/images/home/ug-hr.png"style={{height: "15em"}}/>
             </ImgComparisonSlider>
           </div>
-          <div className="card language">
+          <div className="card language" onMouseEnter={handleRandomLang}>
             <div className="lang-test">
               <h2>Languages</h2>
               <span className="lang-test-line-1"><strong>IELTS 7.0</strong> (CEFR C1)</span>
               <span className="lang-test-line-2"><strong>JLPT N2</strong> (Pre-advanced)</span>
             </div>
-            <div className="lang-letter" onMouseEnter={handleRandomLang}>
+            <div className="lang-letter">
               <span>{languageChars[langChar]}</span>
               {/* <span className="lang-letter-1">ก</span>
               <span className="lang-letter-2">A</span>
