@@ -102,7 +102,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="card certificate">
-            <span><span className="warning">Under reconstruction :(</span><a href="https://elegant-dragon-097141.netlify.app">visit old version HTML</a></span>
+            <span><h2>More info</h2><a href="https://elegant-dragon-097141.netlify.app">visit old version HTML</a></span>
             <div className="certificate arrow">
             <ToolOutlined style={{fontSize: "3em"}}/>
             </div>
