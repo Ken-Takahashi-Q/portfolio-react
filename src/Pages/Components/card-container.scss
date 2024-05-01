@@ -138,7 +138,8 @@
     transition: all 0.5s ease;
 
     h1 {
-      transform: translateY(-30%);
+      transform: translateY(-80%);
+      transition: all 0.5s ease;
     }
 
     .experience {
@@ -148,12 +149,19 @@
 
       .date-sliding, .job-sliding, .duration-sliding {
         position: absolute;
+        &.job-1 {
+          top: 40%;
+        }
+        
+        &.job-2 {
+          top: 60%;
+        }
       }
       .date-sliding {
         left: 6.5%;
       }
       .job-sliding {
-        left: 40%;
+        left: 42%;
       }
       .duration-sliding {
         right: -30%;
@@ -163,8 +171,13 @@
     &:hover {
       transition: all 0.5s ease;
 
+      // h1 {
+      //   transform: translateY(-200%);
+      //   transition: all 0.5s ease;
+      // }
+
       .date-sliding {
-        left: -30%;
+        left: -40%;
         transition: all 0.5s ease;
       }
       .job-sliding {
@@ -298,7 +311,7 @@
     &.hide {
       opacity: 0;
       transform: scale(0);
-      transition: all 0.7s ease;
+      transition: all 0.5s ease;
     }
 
     &.show {
@@ -309,7 +322,7 @@
       height: auto;
       transform: scale(1);
       opacity: 1;
-      transition: all 0.7s ease;
+      transition: all 0.5s ease;
     }
     
     &:target ~ .card-7 {

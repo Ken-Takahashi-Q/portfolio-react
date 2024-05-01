@@ -1,20 +1,27 @@
-import React from 'react';
-import { useState } from 'react'; 
-import './card-container.scss'
-import { UpCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
+import { RightCircleOutlined, UpCircleOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import './card-container.scss';
 
 const CardContainer: React.FC = () => {
   const [showContact, setShowContact] = useState(false);
 
   // Calculate duration
   const startDate = {
+    BIGC: new Date('2023-07-02'),
     NSQ: new Date('2023-03-27'),
     JP: new Date('2022-10-01')
   }
 
   const endDate = {
-    NSQ: new Date(),
+    BIGC: new Date(),
+    NSQ: new Date('2023-06-31'),
     JP: new Date(),
+  }
+  
+  const formatter = (date: Date) => {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    return `${year}.${month}`
   }
 
   const getDuration = (start: Date, end: Date): string => {
@@ -24,10 +31,11 @@ const CardContainer: React.FC = () => {
     const years = Math.floor(diffInDays / 365.25);
     const months = Math.round((diffInDays % 365.25) / 30);
   
-    return `${years} ${years > 1 ? 'years' : 'year'} ${months} ${months > 1 ? 'months' : 'month'}`;
+    return `${years > 1 ? `${years} years` : ""} ${months > 1 ? `${months} months` : ""}`;
   }
 
   const durations = {
+    BIGC: getDuration(startDate.BIGC, endDate.BIGC),
     NSQ: getDuration(startDate.NSQ, endDate.NSQ),
     JP: getDuration(startDate.JP, endDate.JP),
   };
@@ -59,19 +67,25 @@ const CardContainer: React.FC = () => {
     <div className="card-round card-4">
       <h1>Experience</h1>
       <div className="experience">
-        <h3 className="date-sliding">2023.3 - now</h3>
-        <h3 className="job-sliding">Software Engineer (Frontend)</h3>
-        <h3 className="duration-sliding">{durations.NSQ}</h3>
+        <h3 className="date-sliding job-1">{formatter(startDate.BIGC)} - now</h3>
+        <h3 className="job-sliding job-1">Fullstack Developer</h3>
+        <h3 className="duration-sliding job-1">{durations.BIGC}</h3>
+      </div>
+
+      <div className="experience">
+        <h3 className="date-sliding job-2">{formatter(startDate.NSQ)} - {formatter(endDate.NSQ)}</h3>
+        <h3 className="job-sliding job-2">Software Engineer (Frontend)</h3>
+        <h3 className="duration-sliding job-2">{durations.NSQ}</h3>
       </div>
     </div>
 
     <div className="card-round card-5 skill">
       <h1>Skills</h1>
       <ul>
-        <li>HTML/CSS/<br></br>SCSS</li>
         <li>JavaScript/<br></br>TypeScript</li>
         <li>React/Next/<br></br>Tailwind</li>
         <li>Python/<br></br>Node.js</li>
+        <li>Rust/<br></br>SQL</li>
       </ul>
     </div>
 

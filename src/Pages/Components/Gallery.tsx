@@ -1,15 +1,14 @@
-import React from 'react';
-import './gallery.scss'
-import { Carousel } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import React from 'react';
+import './gallery.scss';
 
 const Gallery: React.FC = () => {
   return (
     <div className="gallery">
-      <a href="https://elegant-dragon-097141.netlify.app/12-calculator%20app/" target={'_blank'}>
+      <a href="https://mytutority.vercel.app" target={'_blank'}>
         <div className="gallery card gallery-1">
           <div className="cardname">
-            <p>Tips Calculator</p>
+            <p>Private Tutor</p>
           </div>
         </div>
       </a>
