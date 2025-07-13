@@ -5,15 +5,16 @@ import "./card-container.scss";
 const CardContainer: React.FC = () => {
   const [showContact, setShowContact] = useState(false);
 
-  // Calculate duration
   const startDate = {
+    KPC: new Date("2025-03-03"),
     BIGC: new Date("2023-07-02"),
     NSQ: new Date("2023-03-27"),
     JP: new Date("2022-10-01"),
   };
 
   const endDate = {
-    BIGC: new Date(),
+    KPC: new Date(),
+    BIGC: new Date("2025-02-28"),
     NSQ: new Date("2023-06-31"),
     JP: new Date(),
   };
@@ -37,6 +38,7 @@ const CardContainer: React.FC = () => {
   };
 
   const durations = {
+    KPC: getDuration(startDate.KPC, endDate.KPC),
     BIGC: getDuration(startDate.BIGC, endDate.BIGC),
     NSQ: getDuration(startDate.NSQ, endDate.NSQ),
     JP: getDuration(startDate.JP, endDate.JP),
@@ -63,25 +65,32 @@ const CardContainer: React.FC = () => {
       <div className="card-round card-3">
         <h1>Looking for</h1>
         <h3 className="looking-for-line-1">Fullstack Developer</h3>
-        <h3 className="looking-for-line-2">Frontend Developer</h3>
       </div>
 
       <div className="card-round card-4">
-        <h1>Experience</h1>
+        {/* <h1>Experience</h1> */}
         <div className="experience">
           <h3 className="date-sliding job-1">
-            {formatter(startDate.BIGC)} - now
+            {formatter(startDate.KPC)} - now
           </h3>
           <h3 className="job-sliding job-1">Fullstack Developer</h3>
-          <h3 className="duration-sliding job-1">{durations.BIGC}</h3>
+          <h3 className="duration-sliding job-1">{durations.KPC}</h3>
         </div>
 
         <div className="experience">
           <h3 className="date-sliding job-2">
+            {formatter(startDate.BIGC)} - {formatter(endDate.BIGC)}
+          </h3>
+          <h3 className="job-sliding job-2">Fullstack Developer</h3>
+          <h3 className="duration-sliding job-2">{durations.BIGC}</h3>
+        </div>
+
+        <div className="experience">
+          <h3 className="date-sliding job-3">
             {formatter(startDate.NSQ)} - {formatter(endDate.NSQ)}
           </h3>
-          <h3 className="job-sliding job-2">Software Engineer (Frontend)</h3>
-          <h3 className="duration-sliding job-2">{durations.NSQ}</h3>
+          <h3 className="job-sliding job-3">Software Engineer (Frontend)</h3>
+          <h3 className="duration-sliding job-3">{durations.NSQ}</h3>
         </div>
       </div>
 
@@ -89,16 +98,22 @@ const CardContainer: React.FC = () => {
         <h1>Skills</h1>
         <ul>
           <li>
-            JavaScript/<br></br>TypeScript
+            JavaScript<br></br>React
           </li>
           <li>
-            React/Next/<br></br>Tailwind
+            C++
+            <br />
+            Rust/Go
           </li>
           <li>
-            Python/<br></br>Node.js
+            Python
+            <br />
+            Node.js
           </li>
           <li>
-            Rust/<br></br>SQL
+            C#
+            <br />
+            SQL
           </li>
         </ul>
       </div>
@@ -131,7 +146,11 @@ const CardContainer: React.FC = () => {
             <h3>Github</h3>
           </a>
 
-          <a className="resume" href="/resume.pdf" target="_blank">
+          <a
+            className="resume"
+            href="/Resume_Yathip Takahashi.pdf"
+            target="_blank"
+          >
             <h3>Resume</h3>
           </a>
         </div>

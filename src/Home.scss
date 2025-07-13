@@ -92,7 +92,7 @@
     align-items: center;
     margin-bottom: 1em;
     padding: 0 2em;
-    gap: 1em;
+    gap: 2em;
 
     .left-side {
       flex-direction: column;
@@ -102,7 +102,7 @@
       .work-position {
         width: 100%;
         text-align: start;
-        color:rgb(196, 196, 196)
+        color: rgb(196, 196, 196);
       }
 
       ul {
@@ -196,8 +196,11 @@
       border-radius: 1.6em;
     }
 
-    .intern {
+    .activity {
       grid-area: 1/1/2/2;
+    }
+    .intern {
+      grid-area: 3/1/4/2;
     }
     .ug-project {
       grid-area: 1/2/4/3;
@@ -216,7 +219,7 @@
         margin-top: 1em;
         gap: 1em;
         border-radius: 1em;
-        
+
         // img {
         //   width: 8em;
         //   height: 8em;
@@ -248,7 +251,7 @@
         //   //     transform: translateX(9em);
         //   //     opacity: 0.5;
         //   //     transition: all 1s ease;
-  
+
         //   //   ~#hr {
         //   //       opacity: 0.5;
         //   //       transition: all 1s ease;
@@ -262,14 +265,14 @@
         //   //     transform: translateX(-9em);
         //   //     opacity: 0.5;
         //   //     transition: all 1s ease;
-  
+
         //   //   ~#lr {
         //   //       opacity: 0.5;
         //   //       transition: all 1s ease;
         //   //     }
         //   //   }
         //   // }
-          
+
         // }
       }
     }
@@ -306,7 +309,7 @@
 
         .lang-letter-1 {
           opacity: 0;
-    
+
           &:hover {
             opacity: 0;
             ~ .lang-letter-2 {
@@ -338,8 +341,9 @@
           transform: translateX(20%);
         }
       }
-  
-      &:not(:hover) h1, .arrow {
+
+      &:not(:hover) h1,
+      .arrow {
         transition: all 0.5s ease;
       }
     }
@@ -393,11 +397,11 @@
         gap: 0;
         background-color: #fafafa;
         border-radius: 1em;
-    
+
         .logo {
           height: 100%;
           transition: all 0.5s ease;
-    
+
           img {
             width: 3em;
             height: 3em;
@@ -446,7 +450,7 @@
         padding: 0;
       }
     }
-  
+
     .work-section {
       .right-side {
         grid-template-rows: repeat(5, 1fr);

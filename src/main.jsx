@@ -1,17 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.scss'
-import Home from './Home';
-import Contact from './Pages/Contact';
-import Projects from './Pages/Projects';
-import Janken from './Pages/Janken/Janken';
-import Form from './Pages/Form/Form';
-import IPTracker from './Pages/IP-Tracker/ip-tracker';
-import Calculator from './Pages/Calculator/Calculator';
-import Todo from './Pages/Todo/todo';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./index.scss";
+import Home from "./Home";
+import Contact from "./Pages/Contact";
+import Projects from "./Pages/Projects";
+import Janken from "./Pages/Janken/Janken";
+import Form from "./Pages/Form/Form";
+import IPTracker from "./Pages/IP-Tracker/ip-tracker";
+import Calculator from "./Pages/Calculator/Calculator";
+import Todo from "./Pages/Todo/todo";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
@@ -25,5 +25,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

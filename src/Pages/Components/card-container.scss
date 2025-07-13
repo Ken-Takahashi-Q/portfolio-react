@@ -16,7 +16,7 @@
     border-radius: 2em;
     overflow: hidden;
     transition: transform 0.3s ease;
-    
+
     &:hover {
       transform: scale(1.03);
       transition: transform 0.3s ease;
@@ -151,13 +151,21 @@
       flex-direction: column;
       justify-content: center;
 
-      .date-sliding, .job-sliding, .duration-sliding {
+      .date-sliding,
+      .job-sliding,
+      .duration-sliding {
         position: absolute;
         &.job-1 {
-          top: 40%;
+          top: 20%;
+          // top: 40%;
         }
-        
+
         &.job-2 {
+          top: 40%;
+          // top: 60%;
+        }
+
+        &.job-3 {
           top: 60%;
         }
       }
@@ -165,7 +173,7 @@
         left: 6.5%;
       }
       .job-sliding {
-        left: 42%;
+        left: 44%;
       }
       .duration-sliding {
         right: -30%;
@@ -191,14 +199,16 @@
         right: 7%;
       }
     }
-    &:not(:hover) .date-sliding, .job-sliding, .duration-sliding {
+    &:not(:hover) .date-sliding,
+    .job-sliding,
+    .duration-sliding {
       transition: all 0.5s ease;
     }
   }
   .card-5 {
     grid-area: 3/1/4/3;
 
-    ul  {
+    ul {
       display: flex;
       gap: 2em;
       font-weight: 600;
@@ -226,7 +236,7 @@
         right: -25%;
       }
     }
-    
+
     &:hover {
       cursor: pointer;
 
@@ -241,7 +251,8 @@
       }
     }
 
-    &:not(:hover) h1, .arrow {
+    &:not(:hover) h1,
+    .arrow {
       transition: all 0.5s ease;
     }
   }
@@ -278,10 +289,10 @@
             transition: all 0.3s ease;
           }
         }
-        
+
         &.github {
           background-color: #000000;
-          
+
           &:hover {
             background-color: rgb(63, 63, 63);
             transition: all 0.3s ease;
@@ -294,7 +305,7 @@
 
         &.resume {
           background-color: rgb(203, 52, 52);
-          
+
           &:hover {
             background-color: rgb(212, 91, 91);
             transition: all 0.3s ease;
@@ -328,7 +339,7 @@
       opacity: 1;
       transition: all 0.5s ease;
     }
-    
+
     &:target ~ .card-7 {
       transform: scale(1);
       opacity: 1;
@@ -345,7 +356,7 @@
       .hide {
         transform: scale(0);
         opacity: 0;
-      } 
+      }
     }
   }
 }
@@ -389,17 +400,17 @@
         bottom: -40%;
         right: 0.5em;
       }
-  
+
       &:hover {
         h1 {
           transform: translateY(-130%);
         }
-  
+
         .looking-for-line-1 {
           transform: translateY(-110%);
           font-size: 1.2em;
         }
-  
+
         .looking-for-line-2 {
           bottom: 10%;
           font-size: 1em;
@@ -409,17 +420,17 @@
     .card-4 {
       display: flex;
       flex-direction: column;
-  
+
       h1 {
         transform: translateY(-30%);
       }
-  
+
       .experience {
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 4em;
-  
+
         .date-sliding {
           left: 10%;
           top: 40%;
@@ -434,7 +445,7 @@
           opacity: 0;
         }
       }
-  
+
       &:hover {
         .date-sliding {
           top: 10%;
@@ -452,7 +463,7 @@
       }
     }
     .card-5 {
-      ul  {
+      ul {
         display: grid;
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(2, 1fr);
@@ -479,13 +490,13 @@
           transform: translate(-15%, -20%) rotate(90deg);
         }
       }
-      
+
       &:hover {
         h1 {
           transform: translateY(140%);
           transition: 1s;
         }
-  
+
         .arrow {
           left: 12%;
           bottom: -120%;
@@ -493,8 +504,9 @@
           transition: 1s;
         }
       }
-  
-      &:not(:hover) h1, .arrow {
+
+      &:not(:hover) h1,
+      .arrow {
         transition: all 0.5s ease;
       }
     }
@@ -502,12 +514,12 @@
       .contact-container {
         padding: 0;
         gap: 0.5em;
-  
+
         a {
           padding: 0.5em;
           border-radius: 0.7em;
           font-size: 0.8em;
-  
+
           img {
             width: 1.2em;
             height: 1.2em;
