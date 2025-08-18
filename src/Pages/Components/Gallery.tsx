@@ -87,7 +87,7 @@ const Gallery: React.FC = () => {
 
       <div className="gallery-text">
         <div>
-          <a
+          {/* <a
             className="gallery-text go-to"
             href="https://elegant-dragon-097141.netlify.app/"
           >
@@ -95,7 +95,8 @@ const Gallery: React.FC = () => {
             <div className="icon-bg-scale">
               <ArrowRightOutlined />
             </div>
-          </a>
+          </a> */}
+          <h1>Portfolio</h1>
           <h3>
             Develop projects based on both self-created and provided web designs
           </h3>

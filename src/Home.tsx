@@ -65,8 +65,7 @@ const Home: React.FC = () => {
               </li>
               <li id="exp-2">
                 <span>
-                  <strong>Developed and maintained MPOS</strong>
-                  frontend using TypeScript, delivering an intuitive interface
+                  <strong>Developed and maintained MPOS</strong> frontend using TypeScript, delivering an intuitive interface
                   for in-store sales staff and providing virtual payments for
                   clients
                 </span>
